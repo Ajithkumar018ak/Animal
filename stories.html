@@ -1,0 +1,1768 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Real rescue stories from WILDHEART Animal Rescue Foundation — journeys of courage, recovery, adoption and second chances.">
+
+    <title>Stories — WILDHEART Animal Rescue Foundation</title>
+
+    <!-- Existing WILDHEART stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         PRELOADER
+    ====================================================== -->
+ <div class="preloader" id="preloader">
+
+        <div class="loader-brand">
+
+            <div class="loader-paw">
+                <i class="fa-solid fa-paw"></i>
+            </div>
+
+            <div class="loader-name">
+                PAWSHIELD
+            </div>
+
+            <span>
+                ANIMAL RESCUE FOUNDATION
+            </span>
+
+        </div>
+
+        <div class="loader-line">
+            <div class="loader-progress"></div>
+        </div>
+
+        <div class="loader-status">
+            <span>Preparing a safer world</span>
+            <strong id="loaderPercent">0%</strong>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+   
+    <header class="site-header" id="siteHeader">
+
+        <div class="nav-shell">
+
+                       <a href="index.html" class="brand">
+
+    <img
+        src="assets/logo.webp"
+        alt="PAWSHIELD Animal Rescue Foundation"
+        class="brand-logo"
+    >
+
+</a>
+
+            <nav class="desktop-nav">
+
+                <a href="index.html" >Home</a>
+                <a href="about.html">About</a>
+                <a href="rescue.html">Rescue</a>
+                <a href="resources.html">Resources</a>
+                <a href="stories.html"class="active">Stories</a>
+                <a href="contact.html">Contact</a>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <button class="login-trigger" id="openLogin">
+                    <i class="fa-regular fa-user"></i>
+                    Sign In
+                </button>
+
+                <a href="#help" class="nav-donate">
+                    Help an Animal
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MOBILE DRAWER
+    ====================================================== -->
+
+    <aside class="mobile-drawer"
+        id="mobileDrawer"
+        aria-hidden="true">
+
+        <div class="mobile-drawer-header">
+
+            <a href="index.html"
+                class="mobile-logo">
+
+                <img src="assets/logo.webp"
+                    alt="WILDHEART">
+
+            </a>
+
+            <button class="drawer-close"
+                id="drawerClose"
+                type="button"
+                aria-label="Close menu">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <nav class="mobile-nav">
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html">About</a>
+
+            <a href="rescue.html">Rescue</a>
+
+            <a href="resources.html">Resources</a>
+
+            <a href="stories.html"
+                class="active">
+                Stories
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <button type="button"
+                class="mobile-login"
+                data-login-open>
+                Login
+            </button>
+
+            <a href="support.html"
+                class="mobile-support">
+                Support Us
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <div class="drawer-overlay"
+        id="drawerOverlay">
+    </div>
+
+
+    <main>
+
+
+        <!-- =================================================
+             SECTION 01 — STORIES HERO
+        ================================================== -->
+
+        <section class="stories-hero"
+            id="storiesHero">
+
+            <div class="stories-hero-slides">
+
+                <div class="stories-hero-slide active">
+
+                    <img src="assets/s1.webp"
+                        alt="Rescued dog looking toward the camera">
+
+                    <div class="stories-hero-overlay"></div>
+
+                </div>
+
+
+                <div class="stories-hero-slide">
+
+                    <img src="assets/s2.webp"
+                        alt="Rescued animal receiving care">
+
+                    <div class="stories-hero-overlay"></div>
+
+                </div>
+
+
+                <div class="stories-hero-slide">
+
+                    <img src="assets/s3.webp"
+                        alt="Happy rescued animal with its family">
+
+                    <div class="stories-hero-overlay"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="stories-hero-content">
+
+                <span class="eyebrow hero-reveal">
+                    RESCUE STORIES · WILDHEART
+                </span>
+
+
+                <h1 class="hero-title hero-reveal">
+
+                    Every life has
+                    <br>
+                    a story worth saving.
+
+                </h1>
+
+
+                <p class="hero-description hero-reveal"
+                    id="storiesHeroMessage">
+
+                    Every rescue begins with a moment
+                    that changes everything.
+
+                </p>
+
+
+                <div class="hero-actions hero-reveal">
+
+                    <a href="#rescueJourneys"
+                        class="btn btn-primary">
+
+                        READ THEIR STORIES
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                    <a href="support.html"
+                        class="btn btn-outline">
+
+                        SUPPORT THE MISSION
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="stories-hero-progress">
+
+                <div class="stories-slide-counter">
+
+                    <span id="storiesCurrentSlide">
+                        01
+                    </span>
+
+                    <span class="counter-divider">
+                        /
+                    </span>
+
+                    <span>
+                        03
+                    </span>
+
+                </div>
+
+
+                <div class="stories-progress-track">
+
+                    <span id="storiesProgressBar"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stories-scroll">
+
+                <span>
+                    SCROLL TO DISCOVER
+                </span>
+
+                <i class="fa-solid fa-arrow-down"></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 02 — FEATURED RESCUE STORY
+        ================================================== -->
+
+        <section class="featured-story-section"
+            id="featuredStory">
+
+            <div class="featured-story-wrapper">
+
+
+                <div class="featured-story-image reveal">
+
+                    <div class="image-frame">
+
+                        <img src="assets/s4.webp"
+                            alt="Rescued dog recovering after being found">
+
+                    </div>
+
+
+                    <span class="floating-story-label">
+
+                        WILDHEART
+                        <br>
+                        RESCUE ARCHIVE
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="featured-story-content reveal">
+
+                    <span class="section-eyebrow">
+                        01 · FEATURED STORY
+                    </span>
+
+
+                    <h2>
+                        From the roadside
+                        <br>
+                        to a place called home.
+                    </h2>
+
+
+                    <p class="featured-story-intro">
+
+                        When we first found him, he was frightened,
+                        exhausted and unsure whether people could
+                        be trusted.
+
+                    </p>
+
+
+                    <p>
+
+                        Weeks of medical care, patient rehabilitation
+                        and the quiet consistency of a foster family
+                        slowly changed everything. What began as a
+                        roadside rescue became a journey toward
+                        confidence, connection and finally, home.
+
+                    </p>
+
+
+                    <div class="rescue-timeline">
+
+                        <div class="timeline-item complete">
+
+                            <span class="timeline-dot"></span>
+
+                            <div>
+                                <strong>FOUND</strong>
+                                <small>Day 01</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-line"></div>
+
+
+                        <div class="timeline-item complete">
+
+                            <span class="timeline-dot"></span>
+
+                            <div>
+                                <strong>RESCUED</strong>
+                                <small>Day 01</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-line"></div>
+
+
+                        <div class="timeline-item complete">
+
+                            <span class="timeline-dot"></span>
+
+                            <div>
+                                <strong>TREATED</strong>
+                                <small>Week 02</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-line"></div>
+
+
+                        <div class="timeline-item complete">
+
+                            <span class="timeline-dot"></span>
+
+                            <div>
+                                <strong>RECOVERED</strong>
+                                <small>Week 08</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-line"></div>
+
+
+                        <div class="timeline-item complete">
+
+                            <span class="timeline-dot"></span>
+
+                            <div>
+                                <strong>ADOPTED</strong>
+                                <small>Week 12</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="story-status">
+
+                        <span class="status-dot"></span>
+
+                        RESCUE COMPLETE
+
+                        <strong>
+                            12 weeks of recovery
+                        </strong>
+
+                    </div>
+
+
+                    <a href="404.html?from=stories"
+                        class="text-arrow-link">
+
+                        READ FULL STORY
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 03 — RESCUE JOURNEYS
+        ================================================== -->
+
+        <section class="rescue-journeys-section"
+            id="rescueJourneys">
+
+            <div class="journeys-heading reveal">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        02 · RESCUE JOURNEYS
+                    </span>
+
+                    <h2>
+                        Different beginnings.
+                        <br>
+                        New chapters.
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    Every rescued animal arrives with a past.
+                    Together, we help them discover what comes next.
+
+                </p>
+
+            </div>
+
+
+            <div class="story-editorial-grid">
+
+
+                <article class="story-editorial story-large reveal">
+
+                    <div class="story-image">
+
+                        <img src="assets/s5.webp"
+                            alt="Bruno rescued dog">
+
+                        <div class="story-overlay"></div>
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span>
+                            DOG RESCUE
+                        </span>
+
+                        <h3>
+                            Bruno's Second Beginning
+                        </h3>
+
+                        <p>
+                            After being found alone and frightened,
+                            Bruno slowly learned that kindness could
+                            be consistent.
+                        </p>
+
+                        <a href="404.html?from=stories"
+                            class="story-read">
+
+                            READ STORY
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="story-editorial story-small reveal">
+
+                    <div class="story-image">
+
+                        <img src="assets/s5.webp"
+                            alt="Luna during recovery">
+
+                        <div class="story-overlay"></div>
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span>
+                            RECOVERY
+                        </span>
+
+                        <h3>
+                            Hope Found Luna
+                        </h3>
+
+                        <p>
+                            A fragile rescue became a remarkable
+                            recovery filled with patience and care.
+                        </p>
+
+                        <a href="404.html?from=stories"
+                            class="story-read">
+
+                            READ STORY
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="story-editorial story-small reveal">
+
+                    <div class="story-image">
+
+                        <img src="assets/s6.webp"
+                            alt="Shadow learning to trust">
+
+                        <div class="story-overlay"></div>
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span>
+                            REHABILITATION
+                        </span>
+
+                        <h3>
+                            Shadow Learns to Trust
+                        </h3>
+
+                        <p>
+                            With gentle routines and a safe environment,
+                            Shadow discovered confidence again.
+                        </p>
+
+                        <a href="404.html?from=stories"
+                            class="story-read">
+
+                            READ STORY
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="story-editorial story-wide reveal">
+
+                    <div class="story-image">
+
+                        <img src="assets/s7.webp"
+                            alt="Milo with his adoptive family">
+
+                        <div class="story-overlay"></div>
+
+                    </div>
+
+
+                    <div class="story-content">
+
+                        <span>
+                            ADOPTION
+                        </span>
+
+                        <h3>
+                            Milo Finds His Family
+                        </h3>
+
+                        <p>
+                            The final chapter of Milo's rescue journey
+                            began when the right family finally found him.
+                        </p>
+
+                        <a href="404.html?from=stories"
+                            class="story-read">
+
+                            READ STORY
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 04 — IMPACT THROUGH STORIES
+        ================================================== -->
+
+        <section class="stories-impact-section"
+            id="storiesImpact">
+
+            <div class="impact-inner">
+
+
+                <div class="impact-heading reveal">
+
+                    <span class="section-eyebrow">
+                        03 · IMPACT THROUGH STORIES
+                    </span>
+
+                    <h2>
+                        One rescue becomes
+                        <br>
+                        part of something bigger.
+                    </h2>
+
+                    <p>
+
+                        Every number represents an animal, a person,
+                        a decision and a community choosing compassion.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="impact-numbers">
+
+
+                    <div class="impact-number reveal">
+
+                        <strong data-count="250">
+                            250+
+                        </strong>
+
+                        <span>
+                            ANIMALS RESCUED
+                        </span>
+
+                    </div>
+
+
+                    <div class="impact-number reveal">
+
+                        <strong data-count="180">
+                            180+
+                        </strong>
+
+                        <span>
+                            SUCCESSFUL ADOPTIONS
+                        </span>
+
+                    </div>
+
+
+                    <div class="impact-number reveal">
+
+                        <strong data-count="120">
+                            120+
+                        </strong>
+
+                        <span>
+                            ACTIVE VOLUNTEERS
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="impact-story-strip reveal">
+
+                    <div class="impact-story-item">
+
+                        <span>01</span>
+
+                        <p>
+                            Found scared.
+                        </p>
+
+                    </div>
+
+
+                    <div class="impact-story-item">
+
+                        <span>02</span>
+
+                        <p>
+                            Given medical care.
+                        </p>
+
+                    </div>
+
+
+                    <div class="impact-story-item">
+
+                        <span>03</span>
+
+                        <p>
+                            Placed with a foster family.
+                        </p>
+
+                    </div>
+
+
+                    <div class="impact-story-item">
+
+                        <span>04</span>
+
+                        <p>
+                            Learned to trust again.
+                        </p>
+
+                    </div>
+
+
+                    <div class="impact-story-item">
+
+                        <span>05</span>
+
+                        <p>
+                            Found a forever home.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 05 — STORIES CTA
+        ================================================== -->
+
+        <section class="stories-cta-section"
+            id="storiesCta">
+
+            <div class="stories-cta-background">
+
+                <img src="assets/stories-cta.jpg"
+                    alt="Happy rescued animal">
+
+                <div class="stories-cta-overlay"></div>
+
+            </div>
+
+
+            <div class="stories-cta-content reveal">
+
+                <span class="section-eyebrow">
+                    THE NEXT CHAPTER
+                </span>
+
+
+                <h2>
+                    Your action could
+                    <br>
+                    be the next chapter.
+                </h2>
+
+
+                <p>
+
+                    Foster. Adopt. Volunteer. Donate.
+                    Share a story. There is always a way to help.
+
+                </p>
+
+
+                <div class="cta-actions">
+
+                    <a href="404.html?from=stories"
+                        class="btn btn-primary">
+
+                        GET INVOLVED
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                    <a href="rescue.html"
+                        class="btn btn-outline">
+
+                        EXPLORE RESCUE
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-paw floating-paw-one">
+
+                <i class="fa-solid fa-paw"></i>
+
+            </div>
+
+
+            <div class="floating-paw floating-paw-two">
+
+                <i class="fa-solid fa-heart"></i>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+<!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-main">
+
+
+                <div class="footer-brand">
+
+                     <a href="index.html" class="brand">
+
+        <img
+            src="assets/logo.webp"
+            alt="PAWSHIELD Animal Rescue Foundation"
+            class="footer-logo"
+        >
+
+    </a>
+
+                    <p>
+                        Protecting vulnerable animals,
+                        restoring lives and building
+                        compassionate communities.
+                    </p>
+
+                    <div class="social-links">
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#" aria-label="Youtube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+
+                        <a href="#" aria-label="X">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>Quick Links</h4>
+
+                     <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="rescue.html">Rescue</a>
+                    <a href="resources.html">Resources</a>
+                    <a href="stories.html">Stories</a>
+                    <a href="contact.html">Contact</a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>Get Involved</h4>
+
+                    <a href="contact.html">Volunteer</a>
+                    <a href="contact.html">Foster</a>
+                    <a href="rescue.html">Adopt</a>
+                    <a href="#help">Donate</a>
+
+                </div>
+
+
+                <div class="footer-column footer-contact">
+
+                    <h4>Reach Us</h4>
+
+                    <p>
+                        <i class="fa-solid fa-envelope"></i>
+                        hello@pawshield.org
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-phone"></i>
+                        +91 90000 00000
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Chennai, Tamil Nadu
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 PAWSHIELD Animal Rescue Foundation.
+                    All rights reserved.
+                </span>
+
+                <div>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         PAGE SCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           PRELOADER
+        ====================================================== */
+
+        window.addEventListener("load", () => {
+
+            const preloader =
+                document.getElementById("preloader");
+
+            if (preloader) {
+
+                setTimeout(() => {
+
+                    preloader.classList.add("loaded");
+
+                }, 500);
+
+            }
+
+        });
+
+
+
+        /* =====================================================
+           MOBILE NAVIGATION
+        ====================================================== */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const mobileDrawer =
+            document.getElementById("mobileDrawer");
+
+        const drawerOverlay =
+            document.getElementById("drawerOverlay");
+
+        const drawerClose =
+            document.getElementById("drawerClose");
+
+
+        function openDrawer() {
+
+            if (!mobileDrawer) return;
+
+            mobileDrawer.classList.add("open");
+
+            drawerOverlay.classList.add("active");
+
+            mobileDrawer.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+            document.body.classList.add(
+                "drawer-open"
+            );
+
+        }
+
+
+        function closeDrawer() {
+
+            if (!mobileDrawer) return;
+
+            mobileDrawer.classList.remove("open");
+
+            drawerOverlay.classList.remove("active");
+
+            mobileDrawer.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            document.body.classList.remove(
+                "drawer-open"
+            );
+
+        }
+
+
+        if (menuToggle) {
+
+            menuToggle.addEventListener(
+                "click",
+                openDrawer
+            );
+
+        }
+
+
+        if (drawerClose) {
+
+            drawerClose.addEventListener(
+                "click",
+                closeDrawer
+            );
+
+        }
+
+
+        if (drawerOverlay) {
+
+            drawerOverlay.addEventListener(
+                "click",
+                closeDrawer
+            );
+
+        }
+
+
+        document.querySelectorAll(
+            ".mobile-nav a"
+        ).forEach(link => {
+
+            link.addEventListener(
+                "click",
+                closeDrawer
+            );
+
+        });
+
+
+
+        /* =====================================================
+           STORIES HERO SLIDER
+        ====================================================== */
+
+        const heroSlides =
+            document.querySelectorAll(
+                ".stories-hero-slide"
+            );
+
+        const heroMessage =
+            document.getElementById(
+                "storiesHeroMessage"
+            );
+
+        const currentSlide =
+            document.getElementById(
+                "storiesCurrentSlide"
+            );
+
+        const progressBar =
+            document.getElementById(
+                "storiesProgressBar"
+            );
+
+
+        const heroMessages = [
+
+            "Every rescue begins with a moment that changes everything.",
+
+            "From fear to trust, every animal deserves a second chance.",
+
+            "Real stories. Real recovery. Real lives changed."
+
+        ];
+
+
+        let heroIndex = 0;
+
+        const heroDuration = 6000;
+
+
+        function changeHeroSlide(index) {
+
+            heroSlides.forEach(
+                slide => slide.classList.remove("active")
+            );
+
+
+            heroSlides[index].classList.add("active");
+
+
+            if (heroMessage) {
+
+                heroMessage.classList.remove(
+                    "message-visible"
+                );
+
+
+                setTimeout(() => {
+
+                    heroMessage.textContent =
+                        heroMessages[index];
+
+                    heroMessage.classList.add(
+                        "message-visible"
+                    );
+
+                }, 250);
+
+            }
+
+
+            if (currentSlide) {
+
+                currentSlide.textContent =
+                    String(index + 1).padStart(2, "0");
+
+            }
+
+
+            if (progressBar) {
+
+                progressBar.style.transition = "none";
+
+                progressBar.style.width = "0%";
+
+
+                requestAnimationFrame(() => {
+
+                    requestAnimationFrame(() => {
+
+                        progressBar.style.transition =
+                            `width ${heroDuration}ms linear`;
+
+                        progressBar.style.width = "100%";
+
+                    });
+
+                });
+
+            }
+
+        }
+
+
+        if (heroSlides.length > 0) {
+
+            changeHeroSlide(0);
+
+            setInterval(() => {
+
+                heroIndex =
+                    (heroIndex + 1) %
+                    heroSlides.length;
+
+                changeHeroSlide(heroIndex);
+
+            }, heroDuration);
+
+        }
+
+
+
+        /* =====================================================
+           REVEAL ANIMATIONS
+        ====================================================== */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "revealed"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(element => {
+
+            revealObserver.observe(element);
+
+        });
+
+
+
+        /* =====================================================
+           IMPACT NUMBER ANIMATION
+        ====================================================== */
+
+        const impactNumbers =
+            document.querySelectorAll(
+                ".impact-number strong[data-count]"
+            );
+
+
+        const impactObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (!entry.isIntersecting)
+                            return;
+
+
+                        const element =
+                            entry.target;
+
+                        const target =
+                            Number(
+                                element.dataset.count
+                            );
+
+
+                        let current = 0;
+
+                        const duration = 1200;
+
+                        const startTime =
+                            performance.now();
+
+
+                        function animateNumber(
+                            currentTime
+                        ) {
+
+                            const progress =
+                                Math.min(
+                                    (
+                                        currentTime -
+                                        startTime
+                                    ) / duration,
+                                    1
+                                );
+
+
+                            const eased =
+                                1 -
+                                Math.pow(
+                                    1 - progress,
+                                    3
+                                );
+
+
+                            current =
+                                Math.floor(
+                                    target * eased
+                                );
+
+
+                            element.textContent =
+                                current + "+";
+
+
+                            if (progress < 1) {
+
+                                requestAnimationFrame(
+                                    animateNumber
+                                );
+
+                            }
+
+                        }
+
+
+                        requestAnimationFrame(
+                            animateNumber
+                        );
+
+
+                        impactObserver.unobserve(
+                            element
+                        );
+
+                    });
+
+                },
+                {
+                    threshold: 0.6
+                }
+            );
+
+
+        impactNumbers.forEach(number => {
+
+            impactObserver.observe(number);
+
+        });
+
+
+
+        /* =====================================================
+           LOGIN MODAL
+        ====================================================== */
+
+        const loginModal =
+            document.getElementById(
+                "loginModal"
+            );
+
+
+        const loginOpenButtons =
+            document.querySelectorAll(
+                "[data-login-open]"
+            );
+
+
+        const loginCloseButtons =
+            document.querySelectorAll(
+                "[data-login-close]"
+            );
+
+
+        function openLoginModal() {
+
+            if (!loginModal) return;
+
+            loginModal.classList.add("active");
+
+            loginModal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.classList.add(
+                "modal-open"
+            );
+
+        }
+
+
+        function closeLoginModal() {
+
+            if (!loginModal) return;
+
+            loginModal.classList.remove("active");
+
+            loginModal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
+
+
+        loginOpenButtons.forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    closeDrawer();
+
+                    openLoginModal();
+
+                }
+            );
+
+        });
+
+
+        loginCloseButtons.forEach(button => {
+
+            button.addEventListener(
+                "click",
+                closeLoginModal
+            );
+
+        });
+
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    loginModal &&
+                    loginModal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeLoginModal();
+
+                }
+
+                if (
+                    event.key === "Escape" &&
+                    mobileDrawer &&
+                    mobileDrawer.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    closeDrawer();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           LOGIN TABS
+        ====================================================== */
+
+        const loginTabs =
+            document.querySelectorAll(
+                "[data-login-tab]"
+            );
+
+
+        loginTabs.forEach(tab => {
+
+            tab.addEventListener(
+                "click",
+                () => {
+
+                    loginTabs.forEach(item => {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                    tab.classList.add("active");
+
+                }
+            );
+
+        });
+
+
+
+        /* =====================================================
+           PASSWORD TOGGLE
+        ====================================================== */
+
+        const passwordToggle =
+            document.getElementById(
+                "passwordToggle"
+            );
+
+        const passwordInput =
+            document.getElementById(
+                "loginPassword"
+            );
+
+
+        if (
+            passwordToggle &&
+            passwordInput
+        ) {
+
+            passwordToggle.addEventListener(
+                "click",
+                () => {
+
+                    const isPassword =
+                        passwordInput.type ===
+                        "password";
+
+
+                    passwordInput.type =
+                        isPassword
+                            ? "text"
+                            : "password";
+
+
+                    passwordToggle.innerHTML =
+                        isPassword
+                            ? '<i class="fa-regular fa-eye-slash"></i>'
+                            : '<i class="fa-regular fa-eye"></i>';
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           LOGIN DEMO SUBMISSION
+        ====================================================== */
+
+        const loginForm =
+            document.getElementById(
+                "wildheartLoginForm"
+            );
+
+
+        if (loginForm) {
+
+            loginForm.addEventListener(
+                "submit",
+                event => {
+
+                    event.preventDefault();
+
+                    const email =
+                        document.getElementById(
+                            "loginEmail"
+                        ).value.trim();
+
+
+                    if (!email) return;
+
+
+                    /*
+                     * Frontend-only demo.
+                     * Existing WILDHEART login system
+                     * can be connected here.
+                     */
+
+                    window.location.href =
+                        "user-dashboard.html";
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           SUBTLE HERO PARALLAX
+        ====================================================== */
+
+        const storiesHero =
+            document.getElementById(
+                "storiesHero"
+            );
+
+
+        if (
+            storiesHero &&
+            window.matchMedia(
+                "(min-width: 769px)"
+            ).matches
+        ) {
+
+            window.addEventListener(
+                "scroll",
+                () => {
+
+                    const scrollY =
+                        window.scrollY;
+
+                    if (scrollY < window.innerHeight) {
+
+                        storiesHero.style.setProperty(
+                            "--hero-parallax",
+                            `${scrollY * 0.08}px`
+                        );
+
+                    }
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+        }
+  /* =====================================================
+           HEADER SCROLL
+        ====================================================== */
+
+        const siteHeader = document.getElementById("siteHeader");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 50) {
+
+                siteHeader.classList.add("scrolled");
+
+            } else {
+
+                siteHeader.classList.remove("scrolled");
+
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
