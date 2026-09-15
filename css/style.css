@@ -12018,3 +12018,486 @@ body {
     }
 
 }
+
+
+
+.service-card.service-large {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7, 27, 21, 0.45),
+            rgba(7, 27, 21, 0.92)
+        ),
+        url("../assets/h8.webp") center / cover no-repeat;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+.impact-copy h2 {
+    color: #fbf7f7;
+}
+
+
+.story-content h3 {
+    color: #ffffff;
+}
+
+
+.footer-column > a {
+    position: relative;
+    padding-left: 14px;
+}
+
+.footer-column > a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e8753d;
+    transform: translateY(-50%);
+}
+
+
+
+.footer-subscribe {
+    display: flex;
+    margin-top: 18px;
+}
+
+.footer-subscribe input {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    outline: none;
+}
+
+.footer-subscribe input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-subscribe button {
+    padding: 11px 16px;
+    border: none;
+    background: #e8753d;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    text-align: center;
+    padding-top: 22px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-bottom > span {
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+.footer-bottom > div {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.footer-bottom a {
+    font-size: 14px;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.75;
+}
+
+
+/* ================================
+   FOOTER ALIGNMENT
+================================ */
+
+.site-footer {
+    width: 100%;
+    padding: 70px 0 25px;
+}
+
+.site-footer .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+    gap: 55px;
+    align-items: start;
+}
+
+
+/* BRAND */
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    width: 145px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    margin-bottom: 18px;
+}
+
+.footer-brand p {
+    max-width: 280px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* SOCIAL */
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-links a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+
+/* FOOTER COLUMNS */
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-column h4 {
+    margin: 0 0 20px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.footer-column > a {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 11px;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.footer-column > a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e8753d;
+    transform: translateY(-50%);
+}
+
+
+/* REACH US */
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footer-contact p i {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(232, 117, 61, 0.12);
+    color: #e8753d;
+    font-size: 12px;
+}
+
+
+/* SUBSCRIBE */
+
+.footer-subscribe {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    margin-top: 12px;
+}
+
+.footer-subscribe input {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 13px;
+}
+
+.footer-subscribe input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-subscribe button {
+    height: 42px;
+    padding: 0 15px;
+    border: none;
+    background: #e8753d;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+
+/* ================================
+   FOOTER BOTTOM
+================================ */
+
+.footer-bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 45px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+}
+
+.footer-bottom > span {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.75;
+}
+
+.footer-bottom > div {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.footer-bottom a {
+    font-size: 14px;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.75;
+    transition: 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    opacity: 1;
+    color: #e8753d;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+    .footer-main {
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer-contact {
+        grid-column: 1 / -1;
+    }
+
+    .footer-subscribe {
+        max-width: 380px;
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        padding: 50px 0 22px;
+    }
+
+    .site-footer .container {
+        padding: 0 20px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footer-brand,
+    .footer-column {
+        align-items: flex-start;
+    }
+
+    .footer-logo {
+        width: 130px;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
+
+    .footer-contact {
+        grid-column: auto;
+    }
+
+    .footer-subscribe {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 35px;
+    }
+
+    .footer-bottom > span {
+        font-size: 13px;
+    }
+
+    .footer-bottom a {
+        font-size: 13px;
+    }
+}
+
+
+
+
+.footer-bottom {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 25px !important;
+    text-align: center !important;
+}
+
+.footer-bottom > span {
+    margin: 0 !important;
+    white-space: nowrap;
+}
+
+.footer-bottom > div {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 20px !important;
+}
+
+.footer-bottom a {
+    white-space: nowrap;
+}
+
+
+
+.footer-bottom {
+    border-top: none !important;
+}
+
+
+.story-intro p {
+    color: #000000 !important;
+}
+
+
+.story-content h3,
+.story-content p {
+    color: #000000 !important;
+}
+
+
+
+.drawer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.drawer-contact a,
+.drawer-contact div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff !important;
+    font-size: 15px !important;
+    line-height: 1.4;
+}
+
+.drawer-contact i {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.drawer-contact span {
+    flex: 1;
+    color: #ffffff !important;
+}
+
+
+
+.drawer-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.drawer-logo {
+    width: 145px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}

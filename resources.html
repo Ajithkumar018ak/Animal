@@ -120,72 +120,93 @@
     </header>
 
 
-    <!-- =====================================================
-         MOBILE OVERLAY
-         ===================================================== -->
-
-    <div class="drawer-overlay" id="drawerOverlay"></div>
-
-
-    <!-- =====================================================
-         MOBILE DRAWER
-         ===================================================== -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <aside class="mobile-drawer" id="mobileDrawer">
 
         <div class="drawer-top">
 
-            <span>MENU</span>
+          <a href="index.html" class="drawer-brand">
 
-            <button id="closeDrawer" aria-label="Close menu">
+    <img 
+        src="assets/logo.webp" 
+        alt="PAWSHIELD Animal Rescue Foundation"
+        class="drawer-logo"
+    >
+
+</a>
+
+            <button class="drawer-close" id="drawerClose">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
         </div>
 
 
-        <nav class="drawer-nav">
+        <nav class="mobile-nav">
 
-            <a href="index.html">
-                <span>01</span>
+            <a href="index.html" class="active">
+                <i class="fa-solid fa-house"></i>
                 Home
             </a>
 
             <a href="about.html">
-                <span>02</span>
+                <i class="fa-solid fa-heart"></i>
                 About
             </a>
 
             <a href="rescue.html">
-                <span>03</span>
+                <i class="fa-solid fa-shield-dog"></i>
                 Rescue
             </a>
 
-            <a href="resources.html" class="active">
-                <span>04</span>
+            <a href="resources.html">
+                <i class="fa-solid fa-book-open"></i>
                 Resources
             </a>
 
             <a href="stories.html">
-                <span>05</span>
+                <i class="fa-solid fa-camera"></i>
                 Stories
             </a>
 
             <a href="contact.html">
-                <span>06</span>
+                <i class="fa-solid fa-location-dot"></i>
                 Contact
             </a>
 
         </nav>
 
+        <div class="drawer-contact">
+
+    <a href="mailto:hello@pawshield.org">
+        <i class="fa-solid fa-envelope"></i>
+        <span>hello@pawshield.org</span>
+    </a>
+
+    <a href="tel:+919000000000">
+        <i class="fa-solid fa-phone"></i>
+        <span>+91 90000 00000</span>
+    </a>
+
+    <div>
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Chennai, Tamil Nadu</span>
+    </div>
+
+</div>
 
         <div class="drawer-bottom">
 
-            <p>CARE STARTS WITH KNOWLEDGE.</p>
-
-            <button class="drawer-login" id="drawerLogin">
-                Member Login
+            <button class="drawer-login" id="mobileLogin">
+                <i class="fa-regular fa-user"></i>
+                Sign In
             </button>
+
+            <a href="#help" class="drawer-help">
+                Help an Animal
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
         </div>
 
@@ -657,7 +678,7 @@
 
                         <div class="help-actions">
 
-                            <a href="contact.html"
+                            <a href="404.html"
                                 class="help-action">
 
                                 <div>
@@ -675,7 +696,7 @@
                             </a>
 
 
-                            <a href="rescue.html"
+                            <a href="404.html"
                                 class="help-action">
 
                                 <div>
@@ -732,7 +753,7 @@
 
                     <div class="cta-actions">
 
-                        <a href="stories.html"
+                        <a href="404.html"
                             class="btn btn-primary">
 
                             Read Rescue Stories
@@ -741,7 +762,7 @@
 
                         </a>
 
-                        <a href="contact.html"
+                        <a href="404.html"
                             class="btn btn-outline">
 
                             Get Involved

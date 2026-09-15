@@ -126,9 +126,6 @@
          MOBILE NAV
     ====================================================== -->
 
-   <!-- =========================================================
-         MOBILE NAV
-    ========================================================== -->
 
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
@@ -136,15 +133,15 @@
 
         <div class="drawer-top">
 
-            <a href="index.html" class="drawer-brand">
+          <a href="index.html" class="drawer-brand">
 
-                <span class="brand-mark">
-                    <i class="fa-solid fa-paw"></i>
-                </span>
+    <img 
+        src="assets/logo.webp" 
+        alt="PAWSHIELD Animal Rescue Foundation"
+        class="drawer-logo"
+    >
 
-                <strong>PAWSHIELD</strong>
-
-            </a>
+</a>
 
             <button class="drawer-close" id="drawerClose">
                 <i class="fa-solid fa-xmark"></i>
@@ -187,6 +184,24 @@
 
         </nav>
 
+        <div class="drawer-contact">
+
+    <a href="mailto:hello@pawshield.org">
+        <i class="fa-solid fa-envelope"></i>
+        <span>hello@pawshield.org</span>
+    </a>
+
+    <a href="tel:+919000000000">
+        <i class="fa-solid fa-phone"></i>
+        <span>+91 90000 00000</span>
+    </a>
+
+    <div>
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Chennai, Tamil Nadu</span>
+    </div>
+
+</div>
 
         <div class="drawer-bottom">
 
@@ -203,7 +218,7 @@
         </div>
 
     </aside>
-    
+
 
 
 
@@ -485,12 +500,15 @@
                                     FULL NAME
                                 </label>
 
-                                <input
-                                    type="text"
-                                    id="contactName"
-                                    name="name"
-                                    placeholder="Your full name"
-                                    autocomplete="name">
+                            <input 
+    type="text" 
+    id="contactName" 
+    name="name" 
+    placeholder="Your full name"
+    autocomplete="name"
+    pattern="[A-Za-z ]+"
+    title="Please enter letters only"
+>
 
                                 <small class="form-error"
                                     id="nameError"></small>
