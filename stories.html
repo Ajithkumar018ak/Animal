@@ -103,7 +103,7 @@
             </div>
 
 
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">
+            <button class="mobile-menu-btn" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1104,113 +1104,7 @@
 
 
 
-        /* =====================================================
-           MOBILE NAVIGATION
-        ====================================================== */
 
-        const menuToggle =
-            document.getElementById("menuToggle");
-
-        const mobileDrawer =
-            document.getElementById("mobileDrawer");
-
-        const drawerOverlay =
-            document.getElementById("drawerOverlay");
-
-        const drawerClose =
-            document.getElementById("drawerClose");
-
-
-        function openDrawer() {
-
-            if (!mobileDrawer) return;
-
-            mobileDrawer.classList.add("open");
-
-            drawerOverlay.classList.add("active");
-
-            mobileDrawer.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-            document.body.classList.add(
-                "drawer-open"
-            );
-
-        }
-
-
-        function closeDrawer() {
-
-            if (!mobileDrawer) return;
-
-            mobileDrawer.classList.remove("open");
-
-            drawerOverlay.classList.remove("active");
-
-            mobileDrawer.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            document.body.classList.remove(
-                "drawer-open"
-            );
-
-        }
-
-
-        if (menuToggle) {
-
-            menuToggle.addEventListener(
-                "click",
-                openDrawer
-            );
-
-        }
-
-
-        if (drawerClose) {
-
-            drawerClose.addEventListener(
-                "click",
-                closeDrawer
-            );
-
-        }
-
-
-        if (drawerOverlay) {
-
-            drawerOverlay.addEventListener(
-                "click",
-                closeDrawer
-            );
-
-        }
-
-
-        document.querySelectorAll(
-            ".mobile-nav a"
-        ).forEach(link => {
-
-            link.addEventListener(
-                "click",
-                closeDrawer
-            );
-
-        });
 
 
 
@@ -1787,6 +1681,7 @@
 
         });
     </script>
+    <script src="js/main.js"></script>
 
 </body>
 

@@ -109,7 +109,7 @@
             </div>
 
 
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">
+            <button class="mobile-menu-btn" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1094,101 +1094,7 @@
         setTimeout(hidePreloader, 4000);
 
 
-        /* =====================================================
-           MOBILE DRAWER
-           ===================================================== */
 
-        const menuToggle =
-            document.getElementById("menuToggle");
-
-        const mobileDrawer =
-            document.getElementById("mobileDrawer");
-
-        const drawerOverlay =
-            document.getElementById("drawerOverlay");
-
-        const closeDrawer =
-            document.getElementById("closeDrawer");
-
-
-        function openDrawer() {
-
-            mobileDrawer.classList.add("open");
-            drawerOverlay.classList.add("active");
-
-            document.body.classList.add(
-                "drawer-open"
-            );
-
-        }
-
-
-        function closeMobileDrawer() {
-
-            mobileDrawer.classList.remove("open");
-            drawerOverlay.classList.remove("active");
-
-            document.body.classList.remove(
-                "drawer-open"
-            );
-
-        }
-
-
-        if (menuToggle) {
-
-            menuToggle.addEventListener(
-                "click",
-                openDrawer
-            );
-
-        }
-
-
-        if (closeDrawer) {
-
-            closeDrawer.addEventListener(
-                "click",
-                closeMobileDrawer
-            );
-
-        }
-
-
-        if (drawerOverlay) {
-
-            drawerOverlay.addEventListener(
-                "click",
-                closeMobileDrawer
-            );
-
-        }
-
-
-        document.querySelectorAll(
-            ".drawer-nav a"
-        ).forEach(link => {
-
-            link.addEventListener(
-                "click",
-                closeMobileDrawer
-            );
-
-        });
-
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if (event.key === "Escape") {
-
-                    closeMobileDrawer();
-
-                }
-
-            }
-        );
 
 
         /* =====================================================
@@ -1522,7 +1428,7 @@
 
         });
     </script>
-
+    <script src="js/main.js"></script>
 
 </body>
 

@@ -124,7 +124,7 @@
 
             <!-- Mobile Menu -->
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn"
+            <button class="mobile-menu-btn" id="menuToggle"
                 aria-label="Open navigation">
 
                 <span></span>
@@ -138,13 +138,22 @@
     </header>
 
 
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+
     <div class="mobile-overlay" id="mobileOverlay"></div>
+
+
+    <!-- =====================================================
+         MOBILE DRAWER
+    ====================================================== -->
 
     <aside class="mobile-drawer" id="mobileDrawer">
 
         <div class="drawer-top">
 
-          <a href="index.html" class="drawer-brand">
+           <a href="index.html" class="drawer-brand">
 
     <img 
         src="assets/logo.webp" 
@@ -168,13 +177,13 @@
                 Home
             </a>
 
-            <a href="about.html"class="active"></a>>
+            <a href="about.html" class="active">
                 <i class="fa-solid fa-heart"></i>
                 About
             </a>
 
             <a href="rescue.html">
-                <i class="fa-solid fa-shield-dog"></i>
+                <i class="fa-solid fa-paw"></i>
                 Rescue
             </a>
 
@@ -184,52 +193,33 @@
             </a>
 
             <a href="stories.html">
-                <i class="fa-solid fa-camera"></i>
+                <i class="fa-solid fa-book"></i>
                 Stories
             </a>
 
             <a href="contact.html">
-                <i class="fa-solid fa-location-dot"></i>
+                <i class="fa-solid fa-envelope"></i>
                 Contact
             </a>
 
         </nav>
 
-        <div class="drawer-contact">
-
-    <a href="mailto:hello@pawshield.org">
-        <i class="fa-solid fa-envelope"></i>
-        <span>hello@pawshield.org</span>
-    </a>
-
-    <a href="tel:+919000000000">
-        <i class="fa-solid fa-phone"></i>
-        <span>+91 90000 00000</span>
-    </a>
-
-    <div>
-        <i class="fa-solid fa-location-dot"></i>
-        <span>Chennai, Tamil Nadu</span>
-    </div>
-
-</div>
 
         <div class="drawer-bottom">
 
-            <button class="drawer-login" id="mobileLogin">
+            <button class="drawer-login" id="drawerLogin">
                 <i class="fa-regular fa-user"></i>
-                Sign In
+                Login
             </button>
 
-            <a href="#help" class="drawer-help">
-                Help an Animal
+            <a href="contact.html" class="drawer-help">
+                Support Our Mission
                 <i class="fa-solid fa-arrow-right"></i>
             </a>
 
         </div>
 
     </aside>
-
 
 
     <!-- =====================================================
@@ -1196,75 +1186,7 @@
 
 
 
-        /* MOBILE MENU */
-
-        const mobileMenuBtn =
-            document.getElementById("mobileMenuBtn");
-
-        const drawerClose =
-            document.getElementById("drawerClose");
-
-        const mobileOverlay =
-            document.getElementById("mobileOverlay");
-
-        const drawerLogin =
-            document.getElementById("drawerLogin");
-
-
-        function openMobileMenu() {
-
-            document.body.classList.add("nav-open");
-
-        }
-
-
-        function closeMobileMenu() {
-
-            document.body.classList.remove("nav-open");
-
-        }
-
-
-        mobileMenuBtn.addEventListener(
-            "click",
-            openMobileMenu
-        );
-
-        drawerClose.addEventListener(
-            "click",
-            closeMobileMenu
-        );
-
-        mobileOverlay.addEventListener(
-            "click",
-            closeMobileMenu
-        );
-
-
-        document.querySelectorAll(".mobile-nav a")
-            .forEach(link => {
-
-                link.addEventListener(
-                    "click",
-                    closeMobileMenu
-                );
-
-            });
-
-
-        document.addEventListener("keydown", e => {
-
-            if (e.key === "Escape") {
-
-                closeMobileMenu();
-
-                closeAuth();
-
-            }
-
-        });
-
-
+        
 
         /* HERO SLIDER */
 
@@ -1348,16 +1270,6 @@
         openLogin.addEventListener(
             "click",
             openAuth
-        );
-
-        drawerLogin.addEventListener(
-            "click",
-            () => {
-
-                closeMobileMenu();
-                openAuth();
-
-            }
         );
 
         closeLogin.addEventListener(
@@ -1474,6 +1386,7 @@
         });
 
     </script>
+    <script src="js/main.js"></script>
 
 </body>
 

@@ -97,7 +97,7 @@
 
                 <button class="login-trigger" id="openLogin">
                     <i class="fa-regular fa-user"></i>
-                    Sign In
+                    Login In
                 </button>
 
                 <a href="#help" class="nav-donate">
@@ -108,7 +108,7 @@
             </div>
 
 
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">
+            <button class="mobile-menu-btn" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -2119,37 +2119,7 @@
         setInterval(changeHeroSlide, 6500);
 
 
-        /* =====================================================
-           MOBILE NAVIGATION
-        ====================================================== */
 
-        const menuBtn = document.getElementById("menuBtn");
-        const drawerClose = document.getElementById("drawerClose");
-        const mobileOverlay = document.getElementById("mobileOverlay");
-        const mobileDrawer = document.getElementById("mobileDrawer");
-
-        function openMenu() {
-
-            document.body.classList.add("nav-open");
-
-        }
-
-        function closeMenu() {
-
-            document.body.classList.remove("nav-open");
-
-        }
-
-        menuBtn.addEventListener("click", openMenu);
-        drawerClose.addEventListener("click", closeMenu);
-        mobileOverlay.addEventListener("click", closeMenu);
-
-
-        document.querySelectorAll(".mobile-nav a").forEach(link => {
-
-            link.addEventListener("click", closeMenu);
-
-        });
 
 
         /* =====================================================
@@ -2416,6 +2386,7 @@
         });
 
     </script>
+   <script src="js/main.js"></script>
    <script src="js/login-modal.js"></script>
    
 </body>
