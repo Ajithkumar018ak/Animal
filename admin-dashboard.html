@@ -1,0 +1,7625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="PAWS & HOPE FOUNDATION — Animal Rescue & Welfare Administration Dashboard">
+
+    <title>Admin Dashboard — PAWS & HOPE FOUNDATION</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+
+            --primary: #234B3A;
+            --primary-dark: #18372A;
+            --secondary: #3F7D5A;
+
+            --accent: #F2A65A;
+            --accent-light: #F7C873;
+
+            --background: #F6F8F5;
+            --card: #FFFFFF;
+
+            --text: #1C2922;
+            --muted: #6B756E;
+
+            --success: #2E8B57;
+            --warning: #D99000;
+            --danger: #C94C4C;
+            --info: #4778A9;
+
+            --border: #E5EBE6;
+
+            --shadow:
+                0 14px 40px rgba(35, 75, 58, .08);
+
+            --shadow-soft:
+                0 8px 24px rgba(35, 75, 58, .06);
+
+            --radius: 20px;
+
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family: "Inter", sans-serif;
+
+            background: var(--background);
+
+            color: var(--text);
+
+            min-height: 100vh;
+
+            overflow-x: hidden;
+
+        }
+
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+
+        button {
+            cursor: pointer;
+        }
+
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+
+        /* =========================================================
+           MOBILE OVERLAY
+        ========================================================= */
+
+        .sidebar-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(10, 30, 20, .45);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
+            z-index: 90;
+
+            transition: .3s ease;
+
+        }
+
+
+        .sidebar-overlay.show {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            pointer-events: auto;
+
+        }
+
+
+        /* =========================================================
+           SIDEBAR
+        ========================================================= */
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 0;
+
+            top: 0;
+
+            width: 270px;
+
+            height: 100vh;
+
+            background: var(--primary);
+
+            color: #fff;
+
+            z-index: 100;
+
+            display: flex;
+
+            flex-direction: column;
+
+            padding: 26px 18px;
+
+            overflow-y: auto;
+
+            transition: transform .35s ease;
+
+        }
+
+
+        /* LOGO */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 4px 10px 28px;
+
+        }
+
+
+        .brand-mark {
+
+            width: 46px;
+
+            height: 46px;
+
+            border-radius: 15px;
+
+            background: rgba(242, 166, 90, .15);
+
+            border: 1px solid rgba(247, 200, 115, .28);
+
+            display: grid;
+
+            place-items: center;
+
+            color: var(--accent-light);
+
+            font-size: 21px;
+
+        }
+
+
+        .brand-copy strong {
+
+            display: block;
+
+            font-size: 13px;
+
+            letter-spacing: .7px;
+
+            font-weight: 800;
+
+        }
+
+
+        .brand-copy span {
+
+            display: block;
+
+            margin-top: 4px;
+
+            color: rgba(255,255,255,.62);
+
+            font-size: 10px;
+
+            letter-spacing: 1.2px;
+
+        }
+
+
+        /* ADMIN LABEL */
+
+        .admin-label {
+
+            padding: 0 12px 12px;
+
+            color: rgba(255,255,255,.42);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        /* NAV */
+
+        .sidebar-nav {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+
+        }
+
+
+        .sidebar-link {
+
+            position: relative;
+
+            min-height: 54px;
+
+            padding: 0 13px;
+
+            border-radius: 15px;
+
+            display: grid;
+
+            grid-template-columns: 25px 1fr auto;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: rgba(255,255,255,.68);
+
+            transition: .25s ease;
+
+        }
+
+
+        .sidebar-link i {
+
+            font-size: 15px;
+
+        }
+
+
+        .sidebar-link span:nth-child(2) {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .sidebar-number {
+
+            font-size: 10px;
+
+            opacity: .42;
+
+        }
+
+
+        .sidebar-link:hover {
+
+            background: rgba(255,255,255,.08);
+
+            color: #fff;
+
+            transform: translateX(2px);
+
+        }
+
+
+        .sidebar-link.active {
+
+            background: var(--accent);
+
+            color: #fff;
+
+            box-shadow:
+                0 10px 25px rgba(242,166,90,.18);
+
+        }
+
+
+        .sidebar-link.active .sidebar-number {
+
+            opacity: .85;
+
+        }
+
+
+        /* SIDEBAR BOTTOM */
+
+        .sidebar-bottom {
+
+            margin-top: auto;
+
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255,255,255,.09);
+
+        }
+
+
+        .admin-mini {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 10px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .admin-avatar {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            border: 2px solid rgba(255,255,255,.15);
+
+            flex-shrink: 0;
+
+        }
+
+
+        .admin-avatar img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .admin-mini strong {
+
+            display: block;
+
+            font-size: 12px;
+
+        }
+
+
+        .admin-mini span {
+
+            display: block;
+
+            margin-top: 3px;
+
+            color: rgba(255,255,255,.48);
+
+            font-size: 10px;
+
+        }
+
+
+        .sign-out {
+
+            min-height: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            padding: 0 13px;
+
+            border-radius: 14px;
+
+            color: rgba(255,255,255,.62);
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: .25s ease;
+
+        }
+
+
+        .sign-out:hover {
+
+            background: rgba(201,76,76,.16);
+
+            color: #fff;
+
+        }
+
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        .main-shell {
+
+            min-height: 100vh;
+
+            margin-left: 270px;
+
+        }
+
+
+        /* =========================================================
+           TOPBAR
+        ========================================================= */
+
+        .topbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 70;
+
+            min-height: 78px;
+
+            background: rgba(246,248,245,.94);
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 0 34px;
+
+        }
+
+
+        .menu-toggle {
+
+            width: 42px;
+
+            height: 42px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            background: #fff;
+
+            color: var(--primary);
+
+            display: none;
+
+            place-items: center;
+
+        }
+
+
+        .breadcrumb {
+
+            min-width: 190px;
+
+        }
+
+
+        .breadcrumb small {
+
+            display: block;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.4px;
+
+            color: var(--muted);
+
+        }
+
+
+        .breadcrumb strong {
+
+            display: block;
+
+            margin-top: 4px;
+
+            font-size: 13px;
+
+        }
+
+
+        /* SEARCH */
+
+        .top-search {
+
+            flex: 1;
+
+            max-width: 500px;
+
+            margin: auto;
+
+            position: relative;
+
+        }
+
+
+        .top-search input {
+
+            width: 100%;
+
+            height: 44px;
+
+            border: 1px solid var(--border);
+
+            background: #fff;
+
+            border-radius: 13px;
+
+            padding: 0 48px 0 16px;
+
+            outline: none;
+
+            color: var(--text);
+
+        }
+
+
+        .top-search input:focus {
+
+            border-color: var(--secondary);
+
+            box-shadow:
+                0 0 0 4px rgba(63,125,90,.08);
+
+        }
+
+
+        .top-search i {
+
+            position: absolute;
+
+            right: 17px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+        }
+
+
+        /* TOP ACTIONS */
+
+        .top-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+        .top-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            border: 1px solid var(--border);
+
+            background: #fff;
+
+            border-radius: 12px;
+
+            display: grid;
+
+            place-items: center;
+
+            color: var(--primary);
+
+            transition: .2s ease;
+
+        }
+
+
+        .top-icon:hover {
+
+            background: var(--primary);
+
+            color: #fff;
+
+        }
+
+
+        .top-profile {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding-left: 10px;
+
+        }
+
+
+        .top-profile img {
+
+            width: 39px;
+
+            height: 39px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+        }
+
+
+        .top-profile strong {
+
+            display: block;
+
+            font-size: 12px;
+
+        }
+
+
+        .top-profile span {
+
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 2px;
+
+        }
+
+
+        /* =========================================================
+           CONTENT
+        ========================================================= */
+
+        .content {
+
+            padding: 36px 34px 70px;
+
+            max-width: 1700px;
+
+            margin: auto;
+
+        }
+
+
+        /* =========================================================
+           PAGE SWITCHING
+        ========================================================= */
+
+        .dashboard-page {
+
+            display: none;
+
+        }
+
+
+        .dashboard-page.active {
+
+            display: block;
+
+            animation: pageReveal .35s ease both;
+
+        }
+
+
+        @keyframes pageReveal {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(10px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+        /* =========================================================
+           PAGE HEADING
+        ========================================================= */
+
+        .page-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            gap: 20px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .eyebrow {
+
+            font-size: 10px;
+
+            color: var(--secondary);
+
+            letter-spacing: 1.5px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .page-heading h1 {
+
+            font-size: clamp(28px, 3vw, 43px);
+
+            line-height: 1.08;
+
+            letter-spacing: -1.4px;
+
+        }
+
+
+        .page-heading p {
+
+            max-width: 650px;
+
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+            font-size: 13px;
+
+        }
+
+
+        .heading-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+        .btn {
+
+            min-height: 44px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 0 17px;
+
+            border-radius: 12px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            border: 1px solid transparent;
+
+            transition: .25s ease;
+
+        }
+
+
+        .btn-primary {
+
+            background: var(--primary);
+
+            color: #fff;
+
+        }
+
+
+        .btn-primary:hover {
+
+            background: var(--primary-dark);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .btn-orange {
+
+            background: var(--accent);
+
+            color: #fff;
+
+        }
+
+
+        .btn-orange:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(242,166,90,.25);
+
+        }
+
+
+        .btn-outline {
+
+            background: #fff;
+
+            border-color: var(--border);
+
+            color: var(--primary);
+
+        }
+
+
+        .btn-outline:hover {
+
+            border-color: var(--secondary);
+
+        }
+
+
+        .btn-danger {
+
+            background: rgba(201,76,76,.08);
+
+            color: var(--danger);
+
+            border-color: rgba(201,76,76,.15);
+
+        }
+
+
+        /* =========================================================
+           DASHBOARD HERO
+        ========================================================= */
+
+        .admin-hero {
+
+            background: var(--primary);
+
+            color: #fff;
+
+            border-radius: 25px;
+
+            padding: 38px;
+
+            min-height: 310px;
+
+            display: grid;
+
+            grid-template-columns: 1.15fr .85fr;
+
+            gap: 25px;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            position: relative;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .admin-hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+
+            height: 350px;
+
+            right: -150px;
+
+            top: -180px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+        }
+
+
+        .hero-kicker {
+
+            color: var(--accent-light);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.8px;
+
+        }
+
+
+        .admin-hero h2 {
+
+            max-width: 700px;
+
+            font-size: clamp(30px, 4vw, 50px);
+
+            line-height: 1.04;
+
+            letter-spacing: -2px;
+
+            margin: 10px 0 15px;
+
+        }
+
+
+        .admin-hero p {
+
+            max-width: 660px;
+
+            color: rgba(255,255,255,.68);
+
+            line-height: 1.7;
+
+            font-size: 13px;
+
+        }
+
+
+        .hero-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 22px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .hero-image {
+
+            height: 245px;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            position: relative;
+
+        }
+
+
+        .hero-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .hero-image::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(24,55,42,.15),
+                    transparent
+                );
+
+        }
+
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 16px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .stat-card {
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 22px;
+
+            box-shadow: var(--shadow-soft);
+
+        }
+
+
+        .stat-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+        }
+
+
+        .stat-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 13px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: #EFF5F0;
+
+            color: var(--primary);
+
+        }
+
+
+        .stat-card:nth-child(2) .stat-icon {
+
+            background: #FFF4E8;
+
+            color: var(--accent);
+
+        }
+
+
+        .stat-card:nth-child(3) .stat-icon {
+
+            background: #EDF4FA;
+
+            color: var(--info);
+
+        }
+
+
+        .stat-card:nth-child(4) .stat-icon {
+
+            background: #F9EEEE;
+
+            color: var(--danger);
+
+        }
+
+
+        .stat-change {
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            color: var(--success);
+
+        }
+
+
+        .stat-card h3 {
+
+            margin-top: 20px;
+
+            font-size: 28px;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .stat-card p {
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-top: 4px;
+
+        }
+
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        .section {
+
+            margin-top: 32px;
+
+        }
+
+
+        .section-heading {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 17px;
+
+        }
+
+
+        .section-heading h2 {
+
+            font-size: 21px;
+
+            letter-spacing: -.6px;
+
+        }
+
+
+        .section-heading p {
+
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+        }
+
+
+        .section-link {
+
+            color: var(--secondary);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =========================================================
+           CARDS
+        ========================================================= */
+
+        .card {
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow-soft);
+
+        }
+
+
+        /* =========================================================
+           RESCUE ALERTS
+        ========================================================= */
+
+        .alert-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 16px;
+
+        }
+
+
+        .alert-card {
+
+            padding: 20px;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .alert-card.critical {
+
+            border-left: 4px solid var(--danger);
+
+        }
+
+
+        .alert-card.warning {
+
+            border-left: 4px solid var(--warning);
+
+        }
+
+
+        .alert-card.success {
+
+            border-left: 4px solid var(--success);
+
+        }
+
+
+        .alert-head {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .alert-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 12px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: #F8F2ED;
+
+            color: var(--accent);
+
+        }
+
+
+        .status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            min-height: 24px;
+
+            padding: 0 9px;
+
+            border-radius: 30px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+        }
+
+
+        .status.critical {
+
+            background: #FCECEC;
+
+            color: var(--danger);
+
+        }
+
+
+        .status.warning {
+
+            background: #FFF4DC;
+
+            color: var(--warning);
+
+        }
+
+
+        .status.success {
+
+            background: #EAF6EE;
+
+            color: var(--success);
+
+        }
+
+
+        .alert-card h3 {
+
+            font-size: 15px;
+
+        }
+
+
+        .alert-card p {
+
+            margin-top: 6px;
+
+            color: var(--muted);
+
+            line-height: 1.6;
+
+            font-size: 11px;
+
+        }
+
+
+        .alert-meta {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 17px;
+
+            padding-top: 14px;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+        }
+
+
+        /* =========================================================
+           TWO COLUMN
+        ========================================================= */
+
+        .two-column {
+
+            display: grid;
+
+            grid-template-columns: 1.15fr .85fr;
+
+            gap: 20px;
+
+        }
+
+
+        .panel {
+
+            padding: 22px;
+
+        }
+
+
+        /* =========================================================
+           TABLE
+        ========================================================= */
+
+        .table-wrap {
+
+            overflow-x: auto;
+
+        }
+
+
+        .data-table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 680px;
+
+        }
+
+
+        .data-table th {
+
+            text-align: left;
+
+            padding: 13px 12px;
+
+            font-size: 9px;
+
+            letter-spacing: .6px;
+
+            text-transform: uppercase;
+
+            color: var(--muted);
+
+            border-bottom: 1px solid var(--border);
+
+        }
+
+
+        .data-table td {
+
+            padding: 15px 12px;
+
+            border-bottom: 1px solid var(--border);
+
+            font-size: 11px;
+
+            vertical-align: middle;
+
+        }
+
+
+        .data-table tr:last-child td {
+
+            border-bottom: 0;
+
+        }
+
+
+        .animal-cell {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .animal-thumb {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .animal-thumb img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .animal-cell strong {
+
+            display: block;
+
+            font-size: 11px;
+
+        }
+
+
+        .animal-cell span {
+
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 3px;
+
+        }
+
+
+        /* =========================================================
+           DONATION SUMMARY
+        ========================================================= */
+
+        .money-card {
+
+            padding: 23px;
+
+        }
+
+
+        .money-card .money-label {
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+        }
+
+
+        .money-card h3 {
+
+            margin-top: 8px;
+
+            font-size: 30px;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .money-progress {
+
+            margin-top: 17px;
+
+        }
+
+
+        .progress-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 9px;
+
+            color: var(--muted);
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .progress {
+
+            width: 100%;
+
+            height: 8px;
+
+            background: #EDF1ED;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress span {
+
+            display: block;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background: var(--accent);
+
+        }
+
+
+        /* =========================================================
+           MINI LIST
+        ========================================================= */
+
+        .mini-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 0;
+
+        }
+
+
+        .mini-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 14px 0;
+
+            border-bottom: 1px solid var(--border);
+
+        }
+
+
+        .mini-item:last-child {
+
+            border-bottom: 0;
+
+        }
+
+
+        .mini-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 11px;
+
+            background: #EFF5F0;
+
+            display: grid;
+
+            place-items: center;
+
+            color: var(--primary);
+
+            flex-shrink: 0;
+
+        }
+
+
+        .mini-item strong {
+
+            display: block;
+
+            font-size: 11px;
+
+        }
+
+
+        .mini-item span {
+
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 9px;
+
+            color: var(--muted);
+
+        }
+
+
+        .mini-value {
+
+            margin-left: auto;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =========================================================
+           FILTER BAR
+        ========================================================= */
+
+        .filter-bar {
+
+            display: grid;
+
+            grid-template-columns: 1.5fr repeat(3, 1fr) auto;
+
+            gap: 10px;
+
+            padding: 16px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .field {
+
+            position: relative;
+
+        }
+
+
+        .field input,
+        .field select {
+
+            width: 100%;
+
+            height: 44px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 11px;
+
+            padding: 0 13px;
+
+            background: #fff;
+
+            color: var(--text);
+
+            outline: none;
+
+            font-size: 11px;
+
+        }
+
+
+        .field input:focus,
+        .field select:focus {
+
+            border-color: var(--secondary);
+
+        }
+
+
+        /* =========================================================
+           ANIMAL GRID
+        ========================================================= */
+
+        .animal-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 17px;
+
+        }
+
+
+        .animal-card {
+
+            overflow: hidden;
+
+        }
+
+
+        .animal-card-image {
+
+            height: 210px;
+
+            overflow: hidden;
+
+            position: relative;
+
+        }
+
+
+        .animal-card-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: .4s ease;
+
+        }
+
+
+        .animal-card:hover img {
+
+            transform: scale(1.04);
+
+        }
+
+
+        .animal-status {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 12px;
+
+        }
+
+
+        .animal-card-body {
+
+            padding: 17px;
+
+        }
+
+
+        .animal-card-body h3 {
+
+            font-size: 16px;
+
+        }
+
+
+        .animal-type {
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            margin-top: 3px;
+
+        }
+
+
+        .animal-details {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 8px;
+
+            margin-top: 14px;
+
+        }
+
+
+        .detail-item {
+
+            background: #F7F9F7;
+
+            padding: 9px;
+
+            border-radius: 9px;
+
+        }
+
+
+        .detail-item small {
+
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 8px;
+
+        }
+
+
+        .detail-item strong {
+
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 9px;
+
+        }
+
+
+        .card-actions {
+
+            display: flex;
+
+            gap: 7px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .card-actions .btn {
+
+            flex: 1;
+
+            min-height: 38px;
+
+            padding: 0 8px;
+
+            font-size: 10px;
+
+        }
+
+
+        /* =========================================================
+           ADOPTION CARDS
+        ========================================================= */
+
+        .adoption-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
+
+        }
+
+
+        .adoption-card {
+
+            overflow: hidden;
+
+        }
+
+
+        .adoption-image {
+
+            height: 230px;
+
+            overflow: hidden;
+
+        }
+
+
+        .adoption-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .adoption-body {
+
+            padding: 18px;
+
+        }
+
+
+        .adoption-body h3 {
+
+            font-size: 17px;
+
+        }
+
+
+        .adoption-body > p {
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            margin-top: 4px;
+
+        }
+
+
+        .adoption-meta {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 8px;
+
+            margin-top: 15px;
+
+        }
+
+
+        /* =========================================================
+           DONATION CAMPAIGNS
+        ========================================================= */
+
+        .campaign-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
+
+        }
+
+
+        .campaign-card {
+
+            overflow: hidden;
+
+        }
+
+
+        .campaign-image {
+
+            height: 190px;
+
+            overflow: hidden;
+
+        }
+
+
+        .campaign-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .campaign-body {
+
+            padding: 18px;
+
+        }
+
+
+        .campaign-body h3 {
+
+            font-size: 15px;
+
+        }
+
+
+        .campaign-body p {
+
+            margin-top: 6px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .campaign-money {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 15px;
+
+            font-size: 10px;
+
+        }
+
+
+        .campaign-money strong {
+
+            font-size: 12px;
+
+        }
+
+
+        /* =========================================================
+           USER MANAGEMENT
+        ========================================================= */
+
+        .user-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 17px;
+
+        }
+
+
+        .user-card {
+
+            padding: 20px;
+
+        }
+
+
+        .user-head {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .user-avatar {
+
+            width: 52px;
+
+            height: 52px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+        }
+
+
+        .user-avatar img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .user-head h3 {
+
+            font-size: 14px;
+
+        }
+
+
+        .user-head p {
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 4px;
+
+        }
+
+
+        .user-info {
+
+            margin-top: 18px;
+
+            display: grid;
+
+            gap: 9px;
+
+        }
+
+
+        .user-info-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            font-size: 10px;
+
+        }
+
+
+        .user-info-row span {
+
+            color: var(--muted);
+
+        }
+
+
+        /* =========================================================
+           REPORT CARDS
+        ========================================================= */
+
+        .report-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 16px;
+
+        }
+
+
+        .report-card {
+
+            padding: 22px;
+
+        }
+
+
+        .report-card i {
+
+            font-size: 18px;
+
+            color: var(--secondary);
+
+        }
+
+
+        .report-card h3 {
+
+            margin-top: 18px;
+
+            font-size: 25px;
+
+        }
+
+
+        .report-card p {
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            margin-top: 4px;
+
+        }
+
+
+        /* =========================================================
+           PROFILE
+        ========================================================= */
+
+        .profile-layout {
+
+            display: grid;
+
+            grid-template-columns: 1fr .7fr;
+
+            gap: 20px;
+
+        }
+
+
+        .profile-card {
+
+            padding: 26px;
+
+        }
+
+
+        .profile-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            padding-bottom: 22px;
+
+            border-bottom: 1px solid var(--border);
+
+        }
+
+
+        .profile-large-avatar {
+
+            width: 82px;
+
+            height: 82px;
+
+            border-radius: 24px;
+
+            overflow: hidden;
+
+        }
+
+
+        .profile-large-avatar img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        .profile-header h2 {
+
+            font-size: 21px;
+
+        }
+
+
+        .profile-header p {
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            margin-top: 5px;
+
+        }
+
+
+        .profile-fields {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+            margin-top: 22px;
+
+        }
+
+
+        .profile-field label {
+
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .profile-field div {
+
+            min-height: 44px;
+
+            padding: 0 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            background: #F7F9F7;
+
+            border-radius: 10px;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================================================
+           CENTER EMPTY / INFO
+        ========================================================= */
+
+        .empty-note {
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            margin-top: 55px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+        }
+
+
+        footer strong {
+
+            color: var(--primary);
+
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1250px) {
+
+            .animal-grid {
+
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+
+            }
+
+
+            .stats-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+            }
+
+
+            .campaign-grid,
+            .adoption-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+            }
+
+
+            .report-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+            }
+
+        }
+
+
+        @media (max-width: 1050px) {
+
+            .sidebar {
+
+                width: 250px;
+
+            }
+
+
+            .main-shell {
+
+                margin-left: 250px;
+
+            }
+
+
+            .admin-hero {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .hero-image {
+
+                display: none;
+
+            }
+
+
+            .two-column,
+            .profile-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .alert-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+            }
+
+        }
+
+
+        @media (max-width: 900px) {
+
+            .sidebar {
+
+                transform: translateX(-100%);
+
+                width: 280px;
+
+            }
+
+
+            .sidebar.open {
+
+                transform: translateX(0);
+
+            }
+
+
+            .main-shell {
+
+                margin-left: 0;
+
+            }
+
+
+            .menu-toggle {
+
+                display: grid;
+
+                flex-shrink: 0;
+
+            }
+
+
+            .topbar {
+
+                padding: 0 18px;
+
+            }
+
+
+            .breadcrumb {
+
+                min-width: 0;
+
+            }
+
+
+            .top-search {
+
+                display: none;
+
+            }
+
+
+            .content {
+
+                padding: 28px 18px 60px;
+
+            }
+
+
+            .animal-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+            }
+
+
+            .filter-bar {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .topbar {
+
+                min-height: 70px;
+
+                gap: 9px;
+
+            }
+
+
+            .breadcrumb strong {
+
+                white-space: nowrap;
+
+                overflow: hidden;
+
+                text-overflow: ellipsis;
+
+                max-width: 130px;
+
+            }
+
+
+            .top-profile {
+
+                padding-left: 0;
+
+            }
+
+
+            .top-profile > div {
+
+                display: none;
+
+            }
+
+
+            .top-icon:nth-child(2),
+            .top-icon:nth-child(3) {
+
+                display: none;
+
+            }
+
+
+            .content {
+
+                padding: 24px 14px 50px;
+
+            }
+
+
+            .page-heading {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+            }
+
+
+            .page-heading h1 {
+
+                font-size: 30px;
+
+            }
+
+
+            .admin-hero {
+
+                padding: 25px 20px;
+
+                min-height: auto;
+
+            }
+
+
+            .admin-hero h2 {
+
+                font-size: 31px;
+
+                letter-spacing: -1.2px;
+
+            }
+
+
+            .stats-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 10px;
+
+            }
+
+
+            .stat-card {
+
+                padding: 17px;
+
+            }
+
+
+            .stat-card h3 {
+
+                font-size: 23px;
+
+            }
+
+
+            .alert-grid,
+            .animal-grid,
+            .campaign-grid,
+            .adoption-grid,
+            .user-grid,
+            .report-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .two-column,
+            .profile-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .filter-bar {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .profile-fields {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .hero-actions {
+
+                flex-direction: column;
+
+            }
+
+
+            .hero-actions .btn {
+
+                width: 100%;
+
+            }
+
+
+            footer {
+
+                flex-direction: column;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .stats-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .top-icon {
+
+                width: 36px;
+
+                height: 36px;
+
+            }
+
+
+            .menu-toggle {
+
+                width: 38px;
+
+                height: 38px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+   PAWS & HOPE — SIDEBAR NAVIGATION
+   ========================================= */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 34px;
+    padding: 0 14px;
+}
+
+
+/* -----------------------------------------
+   SIDEBAR LINK
+   ----------------------------------------- */
+
+.sidebar-link {
+    position: relative;
+
+    width: 100%;
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 0 14px;
+
+    border: 1px solid transparent;
+    border-radius: 16px;
+
+    background: transparent;
+    color: rgba(255, 255, 255, 0.68);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: left;
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Icon */
+
+.sidebar-link i {
+    width: 21px;
+    min-width: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Text */
+
+.sidebar-link span:not(.sidebar-number) {
+    flex: 1;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    letter-spacing: 0.1px;
+}
+
+
+/* Number */
+
+.sidebar-number {
+    margin-left: auto;
+
+    min-width: 25px;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+
+    text-align: right;
+
+    color: rgba(255, 255, 255, 0.28);
+
+    transition: color 0.25s ease;
+}
+
+
+/* -----------------------------------------
+   HOVER
+   ----------------------------------------- */
+
+.sidebar-link:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border-color: rgba(255, 255, 255, 0.08);
+
+    transform: translateX(3px);
+}
+
+.sidebar-link:hover i {
+    color: #f2a65a;
+    transform: scale(1.08);
+}
+
+.sidebar-link:hover .sidebar-number {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* -----------------------------------------
+   ACTIVE
+   ----------------------------------------- */
+
+.sidebar-link.active {
+    color: #ffffff;
+
+    background: #f2a65a;
+
+    border-color: rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 10px 24px rgba(242, 166, 90, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+
+    transform: translateX(0);
+}
+
+
+/* Active icon */
+
+.sidebar-link.active i {
+    color: #ffffff;
+}
+
+
+/* Active number */
+
+.sidebar-link.active .sidebar-number {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+
+/* -----------------------------------------
+   ACTIVE LEFT INDICATOR
+   ----------------------------------------- */
+
+.sidebar-link.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -14px;
+    top: 50%;
+
+    width: 3px;
+    height: 30px;
+
+    transform: translateY(-50%);
+
+    background: #f7c873;
+
+    border-radius: 0 5px 5px 0;
+}
+
+
+/* -----------------------------------------
+   CLICK EFFECT
+   ----------------------------------------- */
+
+.sidebar-link:active {
+    transform: scale(0.98);
+}
+
+
+/* -----------------------------------------
+   FOCUS ACCESSIBILITY
+   ----------------------------------------- */
+
+.sidebar-link:focus-visible {
+    outline: 2px solid #f7c873;
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   SIDEBAR BOTTOM
+   ========================================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 20px 14px 18px;
+}
+
+
+/* -----------------------------------------
+   SIGN OUT
+   ----------------------------------------- */
+
+.sign-out {
+    position: relative;
+
+    min-height: 56px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 0 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    background: rgba(255, 255, 255, 0.035);
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.sign-out i {
+    width: 21px;
+
+    display: flex;
+    justify-content: center;
+
+    font-size: 15px;
+
+    transition: transform 0.25s ease;
+}
+
+
+.sign-out:hover {
+    color: #ffffff;
+
+    background: rgba(201, 76, 76, 0.12);
+
+    border-color: rgba(201, 76, 76, 0.25);
+
+    transform: translateX(3px);
+}
+
+
+.sign-out:hover i {
+    color: #ff8b8b;
+    transform: translateX(2px);
+}
+
+
+/* =========================================
+   MOBILE SIDEBAR
+   ========================================= */
+
+@media (max-width: 1024px) {
+
+    .sidebar-nav {
+        margin-top: 28px;
+        padding: 0 12px;
+        gap: 7px;
+    }
+
+    .sidebar-link {
+        min-height: 56px;
+        padding: 0 13px;
+        border-radius: 15px;
+    }
+
+    .sidebar-link.active::before {
+        left: -12px;
+    }
+
+    .sidebar-bottom {
+        padding: 18px 12px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .sidebar-nav {
+        margin-top: 24px;
+        padding: 0 10px;
+        gap: 6px;
+    }
+
+    .sidebar-link {
+        min-height: 54px;
+
+        padding: 0 12px;
+
+        gap: 12px;
+
+        border-radius: 14px;
+
+        font-size: 12px;
+    }
+
+    .sidebar-link i {
+        width: 20px;
+        min-width: 20px;
+        font-size: 14px;
+    }
+
+    .sidebar-number {
+        font-size: 9px;
+    }
+
+    .sidebar-link.active::before {
+        left: -10px;
+        width: 3px;
+        height: 27px;
+    }
+
+    .sign-out {
+        min-height: 53px;
+        padding: 0 13px;
+        border-radius: 14px;
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL DEVICES
+   ========================================= */
+
+@media (max-width: 360px) {
+
+    .sidebar-link {
+        min-height: 51px;
+        padding: 0 10px;
+        gap: 10px;
+    }
+
+    .sidebar-link i {
+        width: 19px;
+        min-width: 19px;
+        font-size: 13px;
+    }
+
+    .sidebar-link span:not(.sidebar-number) {
+        font-size: 11.5px;
+    }
+
+    .sidebar-number {
+        font-size: 8px;
+    }
+
+}
+
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.brand-logo img {
+    width: 150px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         MOBILE OVERLAY
+    ========================================================== -->
+
+    <div class="sidebar-overlay"
+         id="sidebarOverlay"></div>
+
+
+    <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+    <aside class="sidebar"
+           id="sidebar">
+
+
+        <div class="brand">
+
+          
+
+           
+<a href="admin-dashboard.html" class="brand-logo">
+
+    <img 
+        src="assets/logo.webp" 
+        alt="PAWS & HOPE Foundation"
+    >
+
+</a>
+
+        </div>
+
+
+        <div class="admin-label">
+
+            Administration
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+
+            <!-- IMPORTANT:
+                 These are BUTTONS, not href links.
+                 Clicking changes the visible page only.
+            -->
+
+
+            <button type="button"
+                    class="sidebar-link active"
+                    data-page="dashboard">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Dashboard</span>
+
+                <span class="sidebar-number">01</span>
+
+            </button>
+
+
+            <button type="button"
+                    class="sidebar-link"
+                    data-page="rescue">
+
+                <i class="fa-solid fa-paw"></i>
+
+                <span>Rescue Management</span>
+
+                <span class="sidebar-number">02</span>
+
+            </button>
+
+
+            <button type="button"
+                    class="sidebar-link"
+                    data-page="adoption">
+
+                <i class="fa-solid fa-heart"></i>
+
+                <span>Adoption</span>
+
+                <span class="sidebar-number">03</span>
+
+            </button>
+
+
+            <button type="button"
+                    class="sidebar-link"
+                    data-page="donations">
+
+                <i class="fa-solid fa-hand-holding-heart"></i>
+
+                <span>Donations</span>
+
+                <span class="sidebar-number">04</span>
+
+            </button>
+
+
+            <button type="button"
+                    class="sidebar-link"
+                    data-page="users">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Users</span>
+
+                <span class="sidebar-number">05</span>
+
+            </button>
+
+
+
+
+         
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+          
+
+
+            <a href="404.html"
+               class="sign-out">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Sign Out</span>
+
+            </a>
+
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <div class="main-shell">
+
+
+        <!-- =====================================================
+             TOPBAR
+        ====================================================== -->
+
+        <header class="topbar">
+
+
+            <button class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div class="breadcrumb">
+
+                <small>PAWS & HOPE / ADMIN</small>
+
+                <strong id="breadcrumbCurrent">
+                    Dashboard
+                </strong>
+
+            </div>
+
+
+            <div class="top-search">
+
+                <input type="search"
+                       placeholder="Search animals, users, donations…">
+
+                <a href="404.html">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="top-actions">
+
+
+                <a href="404.html"
+                   class="top-icon"
+                   aria-label="Notifications">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                </a>
+
+
+                <a href="404.html"
+                   class="top-icon"
+                   aria-label="Messages">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                </a>
+
+
+                <a href="404.html"
+                   class="top-icon"
+                   aria-label="Help">
+
+                    <i class="fa-regular fa-circle-question"></i>
+
+                </a>
+
+
+                <a href="404.html"
+                   class="top-icon"
+                   aria-label="Settings">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                </a>
+
+
+                <a href="404.html"
+                   class="top-profile">
+
+                    <img src="https://i.pravatar.cc/150?img=12"
+                         alt="Alex Morgan">
+
+                    <div>
+
+                        <strong>Alex Morgan</strong>
+
+                        <span>Administrator</span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             CONTENT
+        ====================================================== -->
+
+        <main class="content">
+
+
+            <!-- =================================================
+                 PAGE 01 — DASHBOARD
+            ================================================== -->
+
+            <section class="dashboard-page active"
+                     id="page-dashboard">
+
+
+                <div class="admin-hero">
+
+
+                    <div>
+
+                        <span class="hero-kicker">
+                            FOUNDATION CONTROL CENTER
+                        </span>
+
+                        <h2>
+                            Every Rescue Begins With Someone Who Cares.
+                        </h2>
+
+                        <p>
+                            Manage rescue operations, adoption requests,
+                            supporter contributions and animal welfare
+                            activities from one central workspace.
+                        </p>
+
+
+                        <div class="hero-actions">
+
+                            <a href="404.html"
+                               class="btn btn-orange">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                                Add Rescue
+
+                            </a>
+
+
+                            <a href="404.html"
+                               class="btn"
+                               style="background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.12);">
+
+                                <i class="fa-solid fa-chart-line"></i>
+
+                                View Reports
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-image">
+
+                        <img src="assets/u1.webp"
+                             alt="Rescue dog">
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-paw"></i>
+                            </div>
+
+                            <span class="stat-change">
+                                +86 this month
+                            </span>
+
+                        </div>
+
+                        <h3>1,248</h3>
+
+                        <p>Animals Rescued</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+
+                            <span class="stat-change">
+                                +34 this month
+                            </span>
+
+                        </div>
+
+                        <h3>864</h3>
+
+                        <p>Successful Adoptions</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-house-chimney-medical"></i>
+                            </div>
+
+                            <span class="stat-change">
+                                38 active today
+                            </span>
+
+                        </div>
+
+                        <h3>42</h3>
+
+                        <p>Active Rescues</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <span class="stat-change">
+                                +412 this month
+                            </span>
+
+                        </div>
+
+                        <h3>8,920</h3>
+
+                        <p>Community Supporters</p>
+
+                    </article>
+
+
+                </div>
+
+
+                <!-- ALERTS -->
+
+                <div class="section">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Priority Rescue Alerts</h2>
+
+                            <p>
+                                Cases requiring immediate administrative attention.
+                            </p>
+
+                        </div>
+
+                        <a href="404.html"
+                           class="section-link">
+
+                            View All
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="alert-grid">
+
+
+                        <article class="card alert-card critical">
+
+                            <div class="alert-head">
+
+                                <div class="alert-icon">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                </div>
+
+                                <span class="status critical">
+                                    Critical
+                                </span>
+
+                            </div>
+
+                            <h3>Rocky — Surgery Required</h3>
+
+                            <p>
+                                Medical team has requested urgent surgery
+                                approval for the rescued Labrador mix.
+                            </p>
+
+                            <div class="alert-meta">
+
+                                <span>
+                                    South Rescue Center
+                                </span>
+
+                                <span>
+                                    18 min ago
+                                </span>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card alert-card warning">
+
+                            <div class="alert-head">
+
+                                <div class="alert-icon">
+                                    <i class="fa-solid fa-kit-medical"></i>
+                                </div>
+
+                                <span class="status warning">
+                                    Attention
+                                </span>
+
+                            </div>
+
+                            <h3>Max — Medical Support</h3>
+
+                            <p>
+                                Treatment and nutrition support is required
+                                for the recovering rescue dog.
+                            </p>
+
+                            <div class="alert-meta">
+
+                                <span>
+                                    Bengaluru Rescue Center
+                                </span>
+
+                                <span>
+                                    42 min ago
+                                </span>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card alert-card success">
+
+                            <div class="alert-head">
+
+                                <div class="alert-icon">
+                                    <i class="fa-solid fa-house-heart"></i>
+                                </div>
+
+                                <span class="status success">
+                                    Positive
+                                </span>
+
+                            </div>
+
+                            <h3>Luna — Adoption Ready</h3>
+
+                            <p>
+                                Recovery complete. Luna has passed her
+                                medical and behavioral assessment.
+                            </p>
+
+                            <div class="alert-meta">
+
+                                <span>
+                                    City Rescue Shelter
+                                </span>
+
+                                <span>
+                                    Today
+                                </span>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT RESCUES -->
+
+                <div class="section">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Recent Rescue Operations</h2>
+
+                            <p>
+                                Latest animals added to the foundation network.
+                            </p>
+
+                        </div>
+
+                        <a href="404.html"
+                           class="section-link">
+
+                            View All
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="card panel">
+
+
+                        <div class="table-wrap">
+
+                            <table class="data-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Animal</th>
+
+                                        <th>Location</th>
+
+                                        <th>Rescued</th>
+
+                                        <th>Health</th>
+
+                                        <th>Status</th>
+
+                                        <th>Action</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="animal-cell">
+
+                                                <div class="animal-thumb">
+
+                                                    <img src="assets/u2.webp"
+                                                         alt="Max">
+
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>Max</strong>
+
+                                                    <span>Labrador Mix · 4 years</span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>Bengaluru</td>
+
+                                        <td>Aug 08, 2026</td>
+
+                                        <td>
+                                            <span class="status warning">
+                                                Recovering
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <span class="status success">
+                                                Active
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                View
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="animal-cell">
+
+                                                <div class="animal-thumb">
+
+                                                    <img src="assets/u2.webp"
+                                                         alt="Luna">
+
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>Luna</strong>
+
+                                                    <span>Domestic Cat · 2 years</span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>City Shelter</td>
+
+                                        <td>Aug 07, 2026</td>
+
+                                        <td>
+                                            <span class="status success">
+                                                Healthy
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <span class="status success">
+                                                Adoption Ready
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                View
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="animal-cell">
+
+                                                <div class="animal-thumb">
+
+                                                    <img src="assets/u3.webp"
+                                                         alt="Rocky">
+
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>Rocky</strong>
+
+                                                    <span>Retriever Mix · 6 years</span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>South Center</td>
+
+                                        <td>Aug 06, 2026</td>
+
+                                        <td>
+                                            <span class="status critical">
+                                                Critical
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <span class="status warning">
+                                                Treatment
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                View
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="animal-cell">
+
+                                                <div class="animal-thumb">
+
+                                                    <img src="assets/u4.webp"
+                                                         alt="Milo">
+
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>Milo</strong>
+
+                                                    <span>Puppy · 8 months</span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>Hope Center</td>
+
+                                        <td>Aug 05, 2026</td>
+
+                                        <td>
+                                            <span class="status warning">
+                                                Vaccination
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <span class="status warning">
+                                                Support Needed
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                View
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DONATION + ACTIVITY -->
+
+                <div class="section two-column">
+
+
+                    <div class="card money-card">
+
+                        <span class="money-label">
+                            TOTAL CONTRIBUTIONS · AUGUST 2026
+                        </span>
+
+                        <h3>₹8,50,400</h3>
+
+                        <div class="money-progress">
+
+                            <div class="progress-info">
+
+                                <span>Monthly target</span>
+
+                                <strong>82%</strong>
+
+                            </div>
+
+                            <div class="progress">
+
+                                <span style="width:82%;"></span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-actions">
+
+                            <a href="404.html"
+                               class="btn btn-primary">
+
+                                View Donations
+
+                            </a>
+
+                            <a href="404.html"
+                               class="btn btn-outline">
+
+                                Reports
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card panel">
+
+                        <div class="section-heading">
+
+                            <div>
+
+                                <h2>Recent Activity</h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-list">
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        New adoption application
+                                    </strong>
+
+                                    <span>
+                                        Sarah Williams · 8 min ago
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-hand-holding-heart"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Donation received
+                                    </strong>
+
+                                    <span>
+                                        Emergency Surgery Fund
+                                    </span>
+
+                                </div>
+
+                                <strong class="mini-value">
+                                    ₹2,500
+                                </strong>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-paw"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        New rescue registered
+                                    </strong>
+
+                                    <span>
+                                        Milo · Hope Center
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 PAGE 02 — RESCUE MANAGEMENT
+            ================================================== -->
+
+            <section class="dashboard-page"
+                     id="page-rescue">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            ADMIN · RESCUE OPERATIONS
+                        </div>
+
+                        <h1>Rescue Management</h1>
+
+                        <p>
+                            Monitor rescued animals, medical conditions,
+                            shelter locations and welfare progress.
+                        </p>
+
+                    </div>
+
+
+                    <div class="heading-actions">
+
+                        <a href="404.html"
+                           class="btn btn-orange">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            Add Rescue
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-paw"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>42</h3>
+
+                        <p>Active Rescues</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-dog"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>28</h3>
+
+                        <p>Dogs in Care</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-cat"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>11</h3>
+
+                        <p>Cats in Care</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-kit-medical"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>03</h3>
+
+                        <p>Critical Cases</p>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="card filter-bar">
+
+
+                    <div class="field">
+
+                        <input type="search"
+                               placeholder="Search animal name, breed or location">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <select>
+
+                            <option>All Species</option>
+
+                            <option>Dogs</option>
+
+                            <option>Cats</option>
+
+                            <option>Puppies</option>
+
+                            <option>Kittens</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <select>
+
+                            <option>All Health Status</option>
+
+                            <option>Healthy</option>
+
+                            <option>Recovering</option>
+
+                            <option>Critical</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <select>
+
+                            <option>All Locations</option>
+
+                            <option>Bengaluru</option>
+
+                            <option>Hope Center</option>
+
+                            <option>South Center</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <a href="404.html"
+                       class="btn btn-primary">
+
+                        Search
+
+                    </a>
+
+                </div>
+
+
+                <div class="animal-grid">
+
+
+                    <!-- 12 ANIMAL CARDS -->
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u9.webp"
+                                 alt="Max">
+
+                            <span class="status warning animal-status">
+                                Recovering
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Max</h3>
+
+                            <p class="animal-type">
+                                Labrador Mix · Male
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>4 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Bengaluru</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Aug 08</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Medical Care</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u14.webp"
+                                 alt="Luna">
+
+                            <span class="status success animal-status">
+                                Healthy
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Luna</h3>
+
+                            <p class="animal-type">
+                                Domestic Cat · Female
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>2 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>City Shelter</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Aug 07</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Adoption Ready</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u5.webp"
+                                 alt="Rocky">
+
+                            <span class="status critical animal-status">
+                                Critical
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Rocky</h3>
+
+                            <p class="animal-type">
+                                Retriever Mix · Male
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>6 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>South Center</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Aug 06</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Surgery</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u8.webp"
+                                 alt="Milo">
+
+                            <span class="status warning animal-status">
+                                Vaccination
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Milo</h3>
+
+                            <p class="animal-type">
+                                Puppy · Male
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>8 Months</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Hope Center</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Aug 05</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Support</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u18.webp"
+                                 alt="Bruno">
+
+                            <span class="status success animal-status">
+                                Stable
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Bruno</h3>
+
+                            <p class="animal-type">
+                                Indie Dog · Male
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>3 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Green Valley</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Aug 04</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Foster</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u9.webp"
+                                 alt="Daisy">
+
+                            <span class="status success animal-status">
+                                Stable
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Daisy</h3>
+
+                            <p class="animal-type">
+                                Beagle Mix · Female
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>2 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Safe Paws</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Aug 03</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Recovery</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u14.webp"
+                                 alt="Coco">
+
+                            <span class="status success animal-status">
+                                Healthy
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Coco</h3>
+
+                            <p class="animal-type">
+                                Persian Cat · Female
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>3 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Hope Shelter</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Aug 02</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Ready</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/s8.webp"
+                                 alt="Simba">
+
+                            <span class="status warning animal-status">
+                                Recovery
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Simba</h3>
+
+                            <p class="animal-type">
+                                Golden Mix · Male
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>5 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Bengaluru</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Aug 01</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Rehab</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u4.webp"
+                                 alt="Bella">
+
+                            <span class="status success animal-status">
+                                Stable
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Bella</h3>
+
+                            <p class="animal-type">
+                                Indie Dog · Female
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>4 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Hope Center</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Jul 31</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Foster</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u13.webp"
+                                 alt="Oscar">
+
+                            <span class="status success animal-status">
+                                Healthy
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Oscar</h3>
+
+                            <p class="animal-type">
+                                Labrador · Male
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>6 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Green Valley</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Jul 30</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Ready</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u10.webp"
+                                 alt="Ruby">
+
+                            <span class="status warning animal-status">
+                                Monitoring
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Ruby</h3>
+
+                            <p class="animal-type">
+                                Domestic Cat · Female
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>1 Year</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Safe Paws</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Jul 29</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Monitoring</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card animal-card">
+
+                        <div class="animal-card-image">
+
+                            <img src="assets/u7.webp"
+                                 alt="Leo">
+
+                            <span class="status success animal-status">
+                                Healthy
+                            </span>
+
+                        </div>
+
+                        <div class="animal-card-body">
+
+                            <h3>Leo</h3>
+
+                            <p class="animal-type">
+                                Mixed Breed · Male
+                            </p>
+
+                            <div class="animal-details">
+
+                                <div class="detail-item">
+                                    <small>Age</small>
+                                    <strong>2 Years</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Location</small>
+                                    <strong>Bengaluru</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Rescued</small>
+                                    <strong>Jul 28</strong>
+                                </div>
+
+                                <div class="detail-item">
+                                    <small>Status</small>
+                                    <strong>Adoption</strong>
+                                </div>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <a href="404.html"
+                                   class="btn btn-outline">
+                                    View
+                                </a>
+
+                                <a href="404.html"
+                                   class="btn btn-orange">
+                                    Manage
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="section">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Rescue Centers</h2>
+
+                            <p>
+                                Foundation shelters currently operating across the network.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="alert-grid">
+
+
+                        <article class="card panel">
+
+                            <div class="alert-head">
+
+                                <div class="alert-icon">
+                                    <i class="fa-solid fa-house-chimney"></i>
+                                </div>
+
+                                <span class="status success">
+                                    Active
+                                </span>
+
+                            </div>
+
+                            <h3>Bengaluru Rescue Center</h3>
+
+                            <p>
+                                Capacity 120 · Current Care 86
+                            </p>
+
+                            <a href="404.html"
+                               class="section-link"
+                               style="display:inline-block;margin-top:15px;">
+                                View Center
+                            </a>
+
+                        </article>
+
+
+                        <article class="card panel">
+
+                            <div class="alert-head">
+
+                                <div class="alert-icon">
+                                    <i class="fa-solid fa-house"></i>
+                                </div>
+
+                                <span class="status success">
+                                    Active
+                                </span>
+
+                            </div>
+
+                            <h3>Hope Shelter</h3>
+
+                            <p>
+                                Capacity 80 · Current Care 62
+                            </p>
+
+                            <a href="404.html"
+                               class="section-link"
+                               style="display:inline-block;margin-top:15px;">
+                                View Center
+                            </a>
+
+                        </article>
+
+
+                        <article class="card panel">
+
+                            <div class="alert-head">
+
+                                <div class="alert-icon">
+                                    <i class="fa-solid fa-tree"></i>
+                                </div>
+
+                                <span class="status success">
+                                    Active
+                                </span>
+
+                            </div>
+
+                            <h3>Green Valley Animal Center</h3>
+
+                            <p>
+                                Capacity 100 · Current Care 74
+                            </p>
+
+                            <a href="404.html"
+                               class="section-link"
+                               style="display:inline-block;margin-top:15px;">
+                                View Center
+                            </a>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 PAGE 03 — ADOPTION
+            ================================================== -->
+
+            <section class="dashboard-page"
+                     id="page-adoption">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            ADMIN · ADOPTION OPERATIONS
+                        </div>
+
+                        <h1>Adoption Management</h1>
+
+                        <p>
+                            Review adoption-ready animals, applications,
+                            assessments and successful home placements.
+                        </p>
+
+                    </div>
+
+
+                    <div class="heading-actions">
+
+                        <a href="404.html"
+                           class="btn btn-orange">
+
+                            Review Applications
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>86</h3>
+
+                        <p>Ready for Adoption</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-file-circle-check"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>124</h3>
+
+                        <p>Applications This Month</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-house-heart"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>864</h3>
+
+                        <p>Successful Adoptions</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-people-roof"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>52</h3>
+
+                        <p>Active Foster Homes</p>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="section">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Pending Adoption Applications</h2>
+
+                            <p>
+                                Applications waiting for administrative review.
+                            </p>
+
+                        </div>
+
+                        <a href="404.html"
+                           class="section-link">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="card panel">
+
+
+                        <div class="table-wrap">
+
+                            <table class="data-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Applicant</th>
+
+                                        <th>Animal</th>
+
+                                        <th>Submitted</th>
+
+                                        <th>Home Type</th>
+
+                                        <th>Status</th>
+
+                                        <th>Action</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Sarah Williams</strong>
+                                        </td>
+
+                                        <td>Bruno</td>
+
+                                        <td>Aug 20, 2026</td>
+
+                                        <td>Apartment</td>
+
+                                        <td>
+                                            <span class="status warning">
+                                                Review
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                Review
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Daniel Carter</strong>
+                                        </td>
+
+                                        <td>Daisy</td>
+
+                                        <td>Aug 19, 2026</td>
+
+                                        <td>Independent House</td>
+
+                                        <td>
+                                            <span class="status success">
+                                                Assessment
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                Review
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Emma Johnson</strong>
+                                        </td>
+
+                                        <td>Coco</td>
+
+                                        <td>Aug 18, 2026</td>
+
+                                        <td>Apartment</td>
+
+                                        <td>
+                                            <span class="status warning">
+                                                Home Check
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                Review
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Michael Brown</strong>
+                                        </td>
+
+                                        <td>Simba</td>
+
+                                        <td>Aug 17, 2026</td>
+
+                                        <td>Independent House</td>
+
+                                        <td>
+                                            <span class="status critical">
+                                                Documents
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                Review
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Featured Adoption Animals</h2>
+
+                            <p>
+                                Animals currently prepared for new homes.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="adoption-grid">
+
+
+                        <article class="card adoption-card">
+
+                            <div class="adoption-image">
+
+                                <img src="assets/u5.webp"
+                                     alt="Bruno">
+
+                            </div>
+
+                            <div class="adoption-body">
+
+                                <h3>Bruno</h3>
+
+                                <p>Indie Dog · 3 Years · Male</p>
+
+                                <div class="adoption-meta">
+
+                                    <div class="detail-item">
+                                        <small>Personality</small>
+                                        <strong>Friendly</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Location</small>
+                                        <strong>Green Valley</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Vaccination</small>
+                                        <strong>Complete</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Status</small>
+                                        <strong>Ready</strong>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-actions">
+
+                                    <a href="404.html"
+                                       class="btn btn-outline">
+                                        View
+                                    </a>
+
+                                    <a href="404.html"
+                                       class="btn btn-orange">
+                                        Manage
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card adoption-card">
+
+                            <div class="adoption-image">
+
+                                <img src="assets/u18.webp"
+                                     alt="Daisy">
+
+                            </div>
+
+                            <div class="adoption-body">
+
+                                <h3>Daisy</h3>
+
+                                <p>Beagle Mix · 2 Years · Female</p>
+
+                                <div class="adoption-meta">
+
+                                    <div class="detail-item">
+                                        <small>Personality</small>
+                                        <strong>Playful</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Location</small>
+                                        <strong>Safe Paws</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Vaccination</small>
+                                        <strong>Complete</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Status</small>
+                                        <strong>Ready</strong>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-actions">
+
+                                    <a href="404.html"
+                                       class="btn btn-outline">
+                                        View
+                                    </a>
+
+                                    <a href="404.html"
+                                       class="btn btn-orange">
+                                        Manage
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card adoption-card">
+
+                            <div class="adoption-image">
+
+                                <img src="assets/u14.webp"
+                                     alt="Coco">
+
+                            </div>
+
+                            <div class="adoption-body">
+
+                                <h3>Coco</h3>
+
+                                <p>Persian Cat · 3 Years · Female</p>
+
+                                <div class="adoption-meta">
+
+                                    <div class="detail-item">
+                                        <small>Personality</small>
+                                        <strong>Calm</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Location</small>
+                                        <strong>Hope Shelter</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Vaccination</small>
+                                        <strong>Complete</strong>
+                                    </div>
+
+                                    <div class="detail-item">
+                                        <small>Status</small>
+                                        <strong>Ready</strong>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-actions">
+
+                                    <a href="404.html"
+                                       class="btn btn-outline">
+                                        View
+                                    </a>
+
+                                    <a href="404.html"
+                                       class="btn btn-orange">
+                                        Manage
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 PAGE 04 — DONATIONS
+            ================================================== -->
+
+            <section class="dashboard-page"
+                     id="page-donations">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            ADMIN · FINANCIAL SUPPORT
+                        </div>
+
+                        <h1>Donation Management</h1>
+
+                        <p>
+                            Monitor foundation contributions, campaigns,
+                            monthly support and donation activity.
+                        </p>
+
+                    </div>
+
+
+                    <div class="heading-actions">
+
+                        <a href="404.html"
+                           class="btn btn-orange">
+
+                            <i class="fa-solid fa-chart-column"></i>
+
+                            Donation Report
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-indian-rupee-sign"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>₹8.50L</h3>
+
+                        <p>August Contributions</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>2,184</h3>
+
+                        <p>Total Donations</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-rotate"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>428</h3>
+
+                        <p>Monthly Supporters</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>72%</h3>
+
+                        <p>Campaign Target Progress</p>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="section">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Active Campaigns</h2>
+
+                            <p>
+                                Current fundraising campaigns managed by the foundation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="campaign-grid">
+
+
+                        <article class="card campaign-card">
+
+                            <div class="campaign-image">
+
+                                <img src="assets/u15.webp"
+                                     alt="Emergency Surgery Fund">
+
+                            </div>
+
+                            <div class="campaign-body">
+
+                                <h3>Emergency Surgery Fund</h3>
+
+                                <p>
+                                    Help provide urgent surgery and recovery
+                                    care for critically injured animals.
+                                </p>
+
+                                <div class="campaign-money">
+
+                                    <strong>₹1,08,500</strong>
+
+                                    <span>72%</span>
+
+                                </div>
+
+                                <div class="progress"
+                                     style="margin-top:8px;">
+
+                                    <span style="width:72%;"></span>
+
+                                </div>
+
+                                <div class="card-actions">
+
+                                    <a href="404.html"
+                                       class="btn btn-outline">
+                                        View
+                                    </a>
+
+                                    <a href="404.html"
+                                       class="btn btn-orange">
+                                        Manage
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card campaign-card">
+
+                            <div class="campaign-image">
+
+                                <img src="assets/u9.webp"
+                                     alt="Shelter Food Drive">
+
+                            </div>
+
+                            <div class="campaign-body">
+
+                                <h3>Shelter Food Drive</h3>
+
+                                <p>
+                                    Keep rescue centers stocked with nutritious
+                                    food for animals in care.
+                                </p>
+
+                                <div class="campaign-money">
+
+                                    <strong>₹1,54,200</strong>
+
+                                    <span>77%</span>
+
+                                </div>
+
+                                <div class="progress"
+                                     style="margin-top:8px;">
+
+                                    <span style="width:77%;"></span>
+
+                                </div>
+
+                                <div class="card-actions">
+
+                                    <a href="404.html"
+                                       class="btn btn-outline">
+                                        View
+                                    </a>
+
+                                    <a href="404.html"
+                                       class="btn btn-orange">
+                                        Manage
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="card campaign-card">
+
+                            <div class="campaign-image">
+
+                                <img src="assets/u11.webp"
+                                     alt="Vaccination Program">
+
+                            </div>
+
+                            <div class="campaign-body">
+
+                                <h3>Puppy Vaccination Program</h3>
+
+                                <p>
+                                    Vaccination and preventive healthcare for
+                                    vulnerable rescued puppies.
+                                </p>
+
+                                <div class="campaign-money">
+
+                                    <strong>₹68,400</strong>
+
+                                    <span>68%</span>
+
+                                </div>
+
+                                <div class="progress"
+                                     style="margin-top:8px;">
+
+                                    <span style="width:68%;"></span>
+
+                                </div>
+
+                                <div class="card-actions">
+
+                                    <a href="404.html"
+                                       class="btn btn-outline">
+                                        View
+                                    </a>
+
+                                    <a href="404.html"
+                                       class="btn btn-orange">
+                                        Manage
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="section">
+
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <h2>Recent Donations</h2>
+
+                            <p>
+                                Latest supporter contributions.
+                            </p>
+
+                        </div>
+
+                        <a href="404.html"
+                           class="section-link">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="card panel">
+
+                        <div class="table-wrap">
+
+                            <table class="data-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Donation ID</th>
+
+                                        <th>Supporter</th>
+
+                                        <th>Campaign</th>
+
+                                        <th>Date</th>
+
+                                        <th>Amount</th>
+
+                                        <th>Status</th>
+
+                                        <th>Action</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+
+                                    <tr>
+
+                                        <td>DON-2026-0184</td>
+
+                                        <td>Alex Morgan</td>
+
+                                        <td>Emergency Surgery Fund</td>
+
+                                        <td>Aug 18, 2026</td>
+
+                                        <td>
+                                            <strong>₹2,500</strong>
+                                        </td>
+
+                                        <td>
+                                            <span class="status success">
+                                                Completed
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                View
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>DON-2026-0183</td>
+
+                                        <td>Priya Sharma</td>
+
+                                        <td>Shelter Food Drive</td>
+
+                                        <td>Aug 18, 2026</td>
+
+                                        <td>
+                                            <strong>₹1,000</strong>
+                                        </td>
+
+                                        <td>
+                                            <span class="status success">
+                                                Completed
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                View
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>DON-2026-0182</td>
+
+                                        <td>Daniel Carter</td>
+
+                                        <td>Puppy Vaccination</td>
+
+                                        <td>Aug 17, 2026</td>
+
+                                        <td>
+                                            <strong>₹5,000</strong>
+                                        </td>
+
+                                        <td>
+                                            <span class="status success">
+                                                Completed
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <a href="404.html"
+                                               class="section-link">
+                                                View
+                                            </a>
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 PAGE 05 — USERS
+            ================================================== -->
+
+            <section class="dashboard-page"
+                     id="page-users">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            ADMIN · COMMUNITY
+                        </div>
+
+                        <h1>User Management</h1>
+
+                        <p>
+                            Manage supporters, volunteers, adopters and
+                            foundation community activity.
+                        </p>
+
+                    </div>
+
+
+                    <div class="heading-actions">
+
+                        <a href="404.html"
+                           class="btn btn-orange">
+
+                            <i class="fa-solid fa-user-plus"></i>
+
+                            Add User
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>8,920</h3>
+
+                        <p>Total Supporters</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>2,184</h3>
+
+                        <p>Active Donors</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-people-group"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>684</h3>
+
+                        <p>Adoption Members</p>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-top">
+
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-hand"></i>
+                            </div>
+
+                        </div>
+
+                        <h3>312</h3>
+
+                        <p>Volunteers</p>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="card filter-bar">
+
+
+                    <div class="field">
+
+                        <input type="search"
+                               placeholder="Search users by name or email">
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <select>
+
+                            <option>All Roles</option>
+
+                            <option>Supporter</option>
+
+                            <option>Volunteer</option>
+
+                            <option>Adopter</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <select>
+
+                            <option>All Status</option>
+
+                            <option>Active</option>
+
+                            <option>Pending</option>
+
+                            <option>Blocked</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <select>
+
+                            <option>Newest First</option>
+
+                            <option>Oldest First</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <a href="404.html"
+                       class="btn btn-primary">
+
+                        Search
+
+                    </a>
+
+                </div>
+
+
+                <div class="user-grid">
+
+
+                    <article class="card user-card">
+
+                        <div class="user-head">
+
+                            <div class="user-avatar">
+
+                                <img src="https://i.pravatar.cc/150?img=12"
+                                     alt="Alex Morgan">
+
+                            </div>
+
+                            <div>
+
+                                <h3>Profile</h3>
+
+                                <p>Animal Supporter</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="user-info">
+
+                            <div class="user-info-row">
+                                <span>Email</span>
+                                <strong>alex@example.com</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Donations</span>
+                                <strong>₹8,500</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Animals</span>
+                                <strong>12</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Status</span>
+                                <span class="status success">Active</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-actions">
+
+                            <a href="404.html"
+                               class="btn btn-outline">
+                                View
+                            </a>
+
+                            <a href="404.html"
+                               class="btn btn-primary">
+                                Manage
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card user-card">
+
+                        <div class="user-head">
+
+                            <div class="user-avatar">
+
+                                <img src="https://i.pravatar.cc/150?img=47"
+                                     alt="Sarah Williams">
+
+                            </div>
+
+                            <div>
+
+                                <h3>Sarah Williams</h3>
+
+                                <p>Adoption Member</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="user-info">
+
+                            <div class="user-info-row">
+                                <span>Email</span>
+                                <strong>sarah@example.com</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Applications</span>
+                                <strong>03</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Adopted</span>
+                                <strong>01</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Status</span>
+                                <span class="status success">Active</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-actions">
+
+                            <a href="404.html"
+                               class="btn btn-outline">
+                                View
+                            </a>
+
+                            <a href="404.html"
+                               class="btn btn-primary">
+                                Manage
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card user-card">
+
+                        <div class="user-head">
+
+                            <div class="user-avatar">
+
+                                <img src="https://i.pravatar.cc/150?img=32"
+                                     alt="Daniel Carter">
+
+                            </div>
+
+                            <div>
+
+                                <h3>Daniel Carter</h3>
+
+                                <p>Volunteer</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="user-info">
+
+                            <div class="user-info-row">
+                                <span>Email</span>
+                                <strong>daniel@example.com</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Hours</span>
+                                <strong>42 hrs</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Programs</span>
+                                <strong>05</strong>
+                            </div>
+
+                            <div class="user-info-row">
+                                <span>Status</span>
+                                <span class="status success">Active</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-actions">
+
+                            <a href="404.html"
+                               class="btn btn-outline">
+                                View
+                            </a>
+
+                            <a href="404.html"
+                               class="btn btn-primary">
+                                Manage
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 PAGE 06 — REPORTS
+            ================================================== -->
+
+            <section class="dashboard-page"
+                     id="page-reports">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            ADMIN · INSIGHTS
+                        </div>
+
+                        <h1>Foundation Reports</h1>
+
+                        <p>
+                            Review operational performance, rescue outcomes,
+                            adoption growth and community contributions.
+                        </p>
+
+                    </div>
+
+
+                    <div class="heading-actions">
+
+                        <a href="404.html"
+                           class="btn btn-orange">
+
+                            <i class="fa-solid fa-download"></i>
+
+                            Export Report
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-grid">
+
+
+                    <article class="card report-card">
+
+                        <i class="fa-solid fa-paw"></i>
+
+                        <h3>1,248</h3>
+
+                        <p>Total Animals Rescued</p>
+
+                    </article>
+
+
+                    <article class="card report-card">
+
+                        <i class="fa-solid fa-heart"></i>
+
+                        <h3>864</h3>
+
+                        <p>Total Successful Adoptions</p>
+
+                    </article>
+
+
+                    <article class="card report-card">
+
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                        <h3>₹8.50L</h3>
+
+                        <p>August Contributions</p>
+
+                    </article>
+
+
+                    <article class="card report-card">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <h3>8,920</h3>
+
+                        <p>Community Supporters</p>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="section two-column">
+
+
+                    <div class="card panel">
+
+                        <div class="section-heading">
+
+                            <div>
+
+                                <h2>Rescue Performance</h2>
+
+                                <p>
+                                    Current animal welfare distribution.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-list">
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-dog"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Dogs</strong>
+                                    <span>Currently in rescue care</span>
+                                </div>
+
+                                <strong class="mini-value">28</strong>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-cat"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Cats</strong>
+                                    <span>Currently in rescue care</span>
+                                </div>
+
+                                <strong class="mini-value">11</strong>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-kit-medical"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Critical Cases</strong>
+                                    <span>Require immediate support</span>
+                                </div>
+
+                                <strong class="mini-value">03</strong>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card panel">
+
+                        <div class="section-heading">
+
+                            <div>
+
+                                <h2>Adoption Performance</h2>
+
+                                <p>
+                                    Monthly adoption progress.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-list">
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-file"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Applications</strong>
+                                    <span>This month</span>
+                                </div>
+
+                                <strong class="mini-value">124</strong>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Approved</strong>
+                                    <span>This month</span>
+                                </div>
+
+                                <strong class="mini-value">68</strong>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-house"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Completed</strong>
+                                    <span>This month</span>
+                                </div>
+
+                                <strong class="mini-value">34</strong>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 PAGE 07 — PROFILE
+            ================================================== -->
+
+            <section class="dashboard-page"
+                     id="page-profile">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            ADMIN · ACCOUNT
+                        </div>
+
+                        <h1>My Profile</h1>
+
+                        <p>
+                            Manage administrator profile information,
+                            responsibilities and account preferences.
+                        </p>
+
+                    </div>
+
+
+                    <div class="heading-actions">
+
+                        <a href="404.html"
+                           class="btn btn-orange">
+
+                            <i class="fa-solid fa-pen"></i>
+
+                            Edit Profile
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-layout">
+
+
+                    <div class="card profile-card">
+
+
+                        <div class="profile-header">
+
+
+                            <div class="profile-large-avatar">
+
+                                <img src="https://i.pravatar.cc/300?img=12"
+                                     alt="Alex Morgan">
+
+                            </div>
+
+
+                            <div>
+
+                                <h2>profile</h2>
+
+                                <p>
+                                    Foundation Administrator
+                                </p>
+
+                                <span class="status success"
+                                      style="margin-top:8px;">
+                                    Active Admin
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="profile-fields">
+
+
+                            <div class="profile-field">
+
+                                <label>Full Name</label>
+
+                                <div>
+                                    Alex Morgan
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-field">
+
+                                <label>Email Address</label>
+
+                                <div>
+                                    alex@pawsandhope.org
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-field">
+
+                                <label>Phone</label>
+
+                                <div>
+                                    +91 98765 43210
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-field">
+
+                                <label>Location</label>
+
+                                <div>
+                                    Bengaluru, India
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-field">
+
+                                <label>Role</label>
+
+                                <div>
+                                    Foundation Administrator
+                                </div>
+
+                            </div>
+
+
+                            <div class="profile-field">
+
+                                <label>Member Since</label>
+
+                                <div>
+                                    January 2024
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="card profile-card">
+
+
+                        <div class="section-heading">
+
+                            <div>
+
+                                <h2>Admin Responsibilities</h2>
+
+                                <p>
+                                    Current access areas.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-list">
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-paw"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Rescue Operations
+                                    </strong>
+
+                                    <span>
+                                        Full management access
+                                    </span>
+
+                                </div>
+
+                                <span class="status success">
+                                    Full
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Adoption
+                                    </strong>
+
+                                    <span>
+                                        Application management
+                                    </span>
+
+                                </div>
+
+                                <span class="status success">
+                                    Full
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-hand-holding-heart"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Donations
+                                    </strong>
+
+                                    <span>
+                                        Campaign management
+                                    </span>
+
+                                </div>
+
+                                <span class="status success">
+                                    Full
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Users
+                                    </strong>
+
+                                    <span>
+                                        Community management
+                                    </span>
+
+                                </div>
+
+                                <span class="status success">
+                                    Full
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="card-actions"
+                             style="margin-top:18px;">
+
+                            <a href="404.html"
+                               class="btn btn-primary">
+
+                                Manage Security
+
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="section">
+
+
+                    <div class="card panel">
+
+
+                        <div class="section-heading">
+
+                            <div>
+
+                                <h2>Account Security</h2>
+
+                                <p>
+                                    Review administrator security settings.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mini-list">
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Password
+                                    </strong>
+
+                                    <span>
+                                        Last updated 30 days ago
+                                    </span>
+
+                                </div>
+
+                                <a href="404.html"
+                                   class="section-link">
+                                    Change
+                                </a>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Two-Factor Authentication
+                                    </strong>
+
+                                    <span>
+                                        Additional account protection enabled
+                                    </span>
+
+                                </div>
+
+                                <span class="status success">
+                                    Enabled
+                                </span>
+
+                            </div>
+
+
+                            <div class="mini-item">
+
+                                <div class="mini-icon">
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Login Activity
+                                    </strong>
+
+                                    <span>
+                                        Last login today at 10:42 AM
+                                    </span>
+
+                                </div>
+
+                                <a href="404.html"
+                                   class="section-link">
+                                    View
+                                </a>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer>
+
+                <div>
+
+                    © 2026
+                    <strong>PAWS & HOPE FOUNDATION</strong>.
+                    All rights reserved.
+
+                </div>
+
+
+                <div>
+
+                    Rescue. Heal. Protect. 🐾
+
+                </div>
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         SIDEBAR = PAGE SWITCH
+         NOT SEPARATE HTML NAVIGATION
+    ========================================================== -->
+
+    <script>
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const overlay =
+            document.getElementById("sidebarOverlay");
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const sidebarLinks =
+            document.querySelectorAll(".sidebar-link");
+
+        const pages =
+            document.querySelectorAll(".dashboard-page");
+
+        const breadcrumbCurrent =
+            document.getElementById("breadcrumbCurrent");
+
+
+        const pageNames = {
+
+            dashboard: "Dashboard",
+
+            rescue: "Rescue Management",
+
+            adoption: "Adoption Management",
+
+            donations: "Donation Management",
+
+            users: "User Management",
+
+            reports: "Foundation Reports",
+
+            profile: "My Profile"
+
+        };
+
+
+        /*
+         * MAIN PAGE SWITCH FUNCTION
+         *
+         * Sidebar click pannumbothu:
+         *
+         * 1. Existing page hide
+         * 2. Selected page show
+         * 3. Active sidebar update
+         * 4. Breadcrumb update
+         * 5. Page top-ku move
+         *
+         * Separate HTML page-ku navigation illa.
+         */
+
+        function showPage(pageName) {
+
+
+            pages.forEach(function(page) {
+
+                page.classList.remove("active");
+
+            });
+
+
+            const selectedPage =
+                document.getElementById(
+                    "page-" + pageName
+                );
+
+
+            if (selectedPage) {
+
+                selectedPage.classList.add("active");
+
+            }
+
+
+            sidebarLinks.forEach(function(link) {
+
+                link.classList.remove("active");
+
+            });
+
+
+            const selectedLink =
+                document.querySelector(
+                    '[data-page="' + pageName + '"]'
+                );
+
+
+            if (selectedLink) {
+
+                selectedLink.classList.add("active");
+
+            }
+
+
+            breadcrumbCurrent.textContent =
+                pageNames[pageName] || "Dashboard";
+
+
+            closeMobileMenu();
+
+
+            /*
+             * Selected page start-la irundhu
+             * normal vertical scroll continue aagum.
+             */
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+        /*
+         * SIDEBAR CLICK
+         */
+
+        sidebarLinks.forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                const pageName =
+                    this.getAttribute("data-page");
+
+                showPage(pageName);
+
+            });
+
+        });
+
+
+        /*
+         * MOBILE MENU OPEN
+         */
+
+        function openMobileMenu() {
+
+            sidebar.classList.add("open");
+
+            overlay.classList.add("show");
+
+            document.body.classList.add("menu-open");
+
+        }
+
+
+        /*
+         * MOBILE MENU CLOSE
+         */
+
+        function closeMobileMenu() {
+
+            sidebar.classList.remove("open");
+
+            overlay.classList.remove("show");
+
+            document.body.classList.remove("menu-open");
+
+        }
+
+
+        /*
+         * HAMBURGER
+         */
+
+        menuToggle.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    sidebar.classList.contains("open")
+                ) {
+
+                    closeMobileMenu();
+
+                } else {
+
+                    openMobileMenu();
+
+                }
+
+            }
+        );
+
+
+        /*
+         * OVERLAY CLICK
+         */
+
+        overlay.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+
+        /*
+         * ESC KEY
+         */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    closeMobileMenu();
+
+                }
+
+            }
+        );
+
+
+        /*
+         * MOBILE LINK CLOSE
+         */
+
+        window.addEventListener(
+            "resize",
+            function() {
+
+                if (window.innerWidth > 900) {
+
+                    closeMobileMenu();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
