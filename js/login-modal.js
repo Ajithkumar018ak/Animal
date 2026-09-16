@@ -3,6 +3,8 @@
    USER / ADMIN LOGIN
    CREATE ACCOUNT
    FORGOT PASSWORD
+   Works on every page — index, about, rescue,
+   resources, stories, contact.
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,7 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================================= */
 
     const loginModal = document.getElementById("loginModal");
-    const openLogin = document.getElementById("openLogin");
+
+    /* Guard: bail out on pages that have no modal */
+    if (!loginModal) return;
+
     const closeLogin = document.querySelector(".close-login");
 
     const loginSection = document.getElementById("loginSection");
@@ -76,43 +81,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       MODAL OPEN
+       MODAL OPEN / CLOSE HELPERS
     ================================================= */
 
-    if (openLogin) {
-
-        openLogin.addEventListener("click", (e) => {
-
-            e.preventDefault();
-
-            loginModal.classList.add("active");
-
-            document.body.style.overflow = "hidden";
-
-            showSection("loginSection");
-
-            clearMessages();
-
-        });
-
+    function openModal() {
+        loginModal.classList.add("active");
+        document.body.classList.add("login-modal-open");
+        showSection("loginSection");
+        clearMessages();
     }
+
+    function closeModal() {
+        loginModal.classList.remove("active");
+        document.body.classList.remove("login-modal-open");
+        clearMessages();
+    }
+
+    /* Expose globally so main.js / other scripts can call if needed */
+    window.openLoginModal  = openModal;
+    window.closeLoginModal = closeModal;
 
 
     /* =================================================
-       MODAL CLOSE
+       BIND ALL OPEN TRIGGERS
+       Covers every button variant across all pages:
+         .login-trigger   — desktop header Sign In
+         #mobileLogin     — mobile drawer Sign In
+         .drawer-login    — same element, by class
+         [data-login-open]— data-attribute variant
     ================================================= */
 
-    function closeModal() {
-
-        if (!loginModal) return;
-
-        loginModal.classList.remove("active");
-
-        document.body.style.overflow = "";
-
-        clearMessages();
-
-    }
+    document.querySelectorAll(
+        ".login-trigger, #mobileLogin, .drawer-login, [data-login-open]"
+    ).forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    });
 
 
     if (closeLogin) {
@@ -129,19 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
        OUTSIDE CLICK
     ================================================= */
 
-    if (loginModal) {
-
-        loginModal.addEventListener("click", (e) => {
-
-            if (e.target === loginModal) {
-
-                closeModal();
-
-            }
-
-        });
-
-    }
+    loginModal.addEventListener("click", (e) => {
+        if (e.target === loginModal) closeModal();
+    });
 
 
     /* =================================================

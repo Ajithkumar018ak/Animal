@@ -793,18 +793,15 @@
 
             <div class="footer-main">
 
-
                 <div class="footer-brand">
 
-                     <a href="index.html" class="brand">
-
-        <img
-            src="assets/logo.webp"
-            alt="PAWSHIELD Animal Rescue Foundation"
-            class="footer-logo"
-        >
-
-    </a>
+                    <a href="index.html" class="brand">
+                        <img
+                            src="assets/logo.webp"
+                            alt="PAWSHIELD Animal Rescue Foundation"
+                            class="footer-logo"
+                        >
+                    </a>
 
                     <p>
                         Protecting vulnerable animals,
@@ -813,7 +810,6 @@
                     </p>
 
                     <div class="social-links">
-
                         <a href="#" aria-label="Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
@@ -829,7 +825,6 @@
                         <a href="#" aria-label="X">
                             <i class="fa-brands fa-x-twitter"></i>
                         </a>
-
                     </div>
 
                 </div>
@@ -839,7 +834,7 @@
 
                     <h4>Quick Links</h4>
 
-                     <a href="index.html">Home</a>
+                    <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
                     <a href="rescue.html">Rescue</a>
                     <a href="resources.html">Resources</a>
@@ -856,7 +851,7 @@
                     <a href="contact.html">Volunteer</a>
                     <a href="contact.html">Foster</a>
                     <a href="rescue.html">Adopt</a>
-                    <a href="#help">Donate</a>
+                    <a href="index.html#help">Donate</a>
 
                 </div>
 
@@ -879,6 +874,17 @@
                         <i class="fa-solid fa-location-dot"></i>
                         Chennai, Tamil Nadu
                     </p>
+
+                    <div class="footer-subscribe">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            aria-label="Enter your email"
+                        >
+                        <button type="button">
+                            Subscribe
+                        </button>
+                    </div>
 
                 </div>
 
@@ -1098,167 +1104,6 @@
 
 
         /* =====================================================
-           LOGIN MODAL
-           ===================================================== */
-
-        const loginModal =
-            document.getElementById("loginModal");
-
-        const openLogin =
-            document.getElementById("openLogin");
-
-        const drawerLogin =
-            document.getElementById("drawerLogin");
-
-        const closeLogin =
-            document.getElementById("closeLogin");
-
-        const loginBackdrop =
-            document.getElementById("loginBackdrop");
-
-
-        function showLogin() {
-
-            loginModal.classList.add("active");
-
-            document.body.classList.add(
-                "login-open"
-            );
-
-            closeMobileDrawer();
-
-        }
-
-
-        function hideLogin() {
-
-            loginModal.classList.remove("active");
-
-            document.body.classList.remove(
-                "login-open"
-            );
-
-        }
-
-
-        if (openLogin) {
-
-            openLogin.addEventListener(
-                "click",
-                showLogin
-            );
-
-        }
-
-
-        if (drawerLogin) {
-
-            drawerLogin.addEventListener(
-                "click",
-                showLogin
-            );
-
-        }
-
-
-        if (closeLogin) {
-
-            closeLogin.addEventListener(
-                "click",
-                hideLogin
-            );
-
-        }
-
-
-        if (loginBackdrop) {
-
-            loginBackdrop.addEventListener(
-                "click",
-                hideLogin
-            );
-
-        }
-
-
-        /* =====================================================
-           PASSWORD EYE
-           ===================================================== */
-
-        document.querySelectorAll(
-            ".password-toggle"
-        ).forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    const target =
-                        document.getElementById(
-                            button.dataset.target
-                        );
-
-                    const icon =
-                        button.querySelector("i");
-
-
-                    if (target.type === "password") {
-
-                        target.type = "text";
-
-                        icon.classList.remove(
-                            "fa-eye"
-                        );
-
-                        icon.classList.add(
-                            "fa-eye-slash"
-                        );
-
-                    } else {
-
-                        target.type = "password";
-
-                        icon.classList.remove(
-                            "fa-eye-slash"
-                        );
-
-                        icon.classList.add(
-                            "fa-eye"
-                        );
-
-                    }
-
-                }
-            );
-
-        });
-
-
-        /* =====================================================
-           LOGIN DEMO
-           ===================================================== */
-
-        const loginForm =
-            document.getElementById("loginForm");
-
-        if (loginForm) {
-
-            loginForm.addEventListener(
-                "submit",
-                event => {
-
-                    event.preventDefault();
-
-                    window.location.href =
-                        "user-dashboard.html";
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
            HERO SLIDER
            ===================================================== */
 
@@ -1429,6 +1274,7 @@
         });
     </script>
     <script src="js/main.js"></script>
+    <script src="js/login-modal.js"></script>
 
 </body>
 

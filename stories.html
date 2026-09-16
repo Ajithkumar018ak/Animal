@@ -92,7 +92,7 @@
 
                 <button class="login-trigger" id="openLogin">
                     <i class="fa-regular fa-user"></i>
-                    Sign In
+                    Login
                 </button>
 
                 <a href="#help" class="nav-donate">
@@ -963,18 +963,15 @@
 
             <div class="footer-main">
 
-
                 <div class="footer-brand">
 
-                     <a href="index.html" class="brand">
-
-        <img
-            src="assets/logo.webp"
-            alt="PAWSHIELD Animal Rescue Foundation"
-            class="footer-logo"
-        >
-
-    </a>
+                    <a href="index.html" class="brand">
+                        <img
+                            src="assets/logo.webp"
+                            alt="PAWSHIELD Animal Rescue Foundation"
+                            class="footer-logo"
+                        >
+                    </a>
 
                     <p>
                         Protecting vulnerable animals,
@@ -983,7 +980,6 @@
                     </p>
 
                     <div class="social-links">
-
                         <a href="#" aria-label="Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
@@ -999,7 +995,6 @@
                         <a href="#" aria-label="X">
                             <i class="fa-brands fa-x-twitter"></i>
                         </a>
-
                     </div>
 
                 </div>
@@ -1009,7 +1004,7 @@
 
                     <h4>Quick Links</h4>
 
-                     <a href="index.html">Home</a>
+                    <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
                     <a href="rescue.html">Rescue</a>
                     <a href="resources.html">Resources</a>
@@ -1026,7 +1021,7 @@
                     <a href="contact.html">Volunteer</a>
                     <a href="contact.html">Foster</a>
                     <a href="rescue.html">Adopt</a>
-                    <a href="#help">Donate</a>
+                    <a href="index.html#help">Donate</a>
 
                 </div>
 
@@ -1049,6 +1044,17 @@
                         <i class="fa-solid fa-location-dot"></i>
                         Chennai, Tamil Nadu
                     </p>
+
+                    <div class="footer-subscribe">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            aria-label="Enter your email"
+                        >
+                        <button type="button">
+                            Subscribe
+                        </button>
+                    </div>
 
                 </div>
 
@@ -1073,7 +1079,666 @@
 
     </footer>
 
+         LOGIN MODAL
+    ========================================================== -->
 
+   
+<!-- =========================================================
+     PAWSHIELD LOGIN MODAL
+========================================================= -->
+
+<div id="loginModal" class="login-modal">
+
+    <div class="login-modal-content">
+
+        <!-- CLOSE -->
+        <button
+            type="button"
+            class="close-login"
+            aria-label="Close login modal">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="login-card">
+
+
+            <!-- =================================================
+                 1. LOGIN SECTION
+            ================================================= -->
+
+            <div
+                class="form-section active"
+                id="loginSection"
+                style="display:block; opacity:1; transform:translateY(0);">
+
+
+                <!-- LOGIN HEADER -->
+
+                <div class="login-header">
+
+                    <a
+                        href="index.html"
+                        class="login-logo">
+
+                        <img
+                            src="assets/logo2.webp"
+                            alt="PAWSHIELD Animal Rescue Foundation"
+                            class="logo-img">
+
+                    </a>
+
+                    <p>
+                        Sign in to your PAWSHIELD rescue community.
+                    </p>
+
+                </div>
+
+
+                <!-- USER / ADMIN TABS -->
+
+                <div class="login-tabs">
+
+                    <button
+                        type="button"
+                        class="login-tab-btn active"
+                        id="tabUser">
+
+                        User Login
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="login-tab-btn"
+                        id="tabAdmin">
+
+                        Admin Login
+
+                    </button>
+
+                </div>
+
+
+                <!-- SUCCESS MESSAGE -->
+
+                <div
+                    id="loginSuccess"
+                    class="alert alert-success">
+                </div>
+
+
+                <!-- ERROR MESSAGE -->
+
+                <div
+                    id="loginError"
+                    class="alert alert-danger">
+                </div>
+
+
+                <!-- LOGIN FORM -->
+
+                <form
+                    id="loginForm"
+                    novalidate>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="you@example.com"
+                            required
+                            autocomplete="email">
+
+                        <div
+                            class="validation-message"
+                            id="loginEmailValError">
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+
+                        <div class="password-input-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                class="form-control"
+                                placeholder="Enter your password"
+                                required
+                                autocomplete="current-password">
+
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle-btn"
+                                aria-label="Show password">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            class="validation-message"
+                            id="loginPasswordValError">
+                        </div>
+
+                    </div>
+
+
+                    <!-- REMEMBER / FORGOT -->
+
+                    <div class="login-remember">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe">
+
+                            Remember Me
+
+                        </label>
+
+
+                        <a
+                            href="#"
+                            id="forgotPasswordLink">
+
+                            Forgot Password?
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-login-submit"
+                        style="width:100%;">
+
+                        Sign In
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <!-- SIGN UP -->
+
+                    <div
+                        class="login-signup-link"
+                        style="
+                            text-align:center;
+                            margin-top:20px;
+                            font-size:.9rem;
+                        ">
+
+                        Don't have an account?
+
+                        <a
+                            href="#"
+                            id="toSignUpLink">
+
+                            Create Account
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- SECURITY NOTE -->
+
+                    <div class="login-note">
+
+                        <i class="fa-solid fa-shield-dog"></i>
+
+                        <span>
+                            Your information is kept safe and secure.
+                        </span>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 2. FORGOT PASSWORD SECTION
+            ================================================= -->
+
+            <div
+                class="form-section"
+                id="forgotSection"
+                style="
+                    display:none;
+                    opacity:0;
+                    transform:translateY(10px);
+                ">
+
+
+                <!-- HEADER -->
+
+                <div class="login-header">
+
+                    <a
+                        href="index.html"
+                        class="login-logo">
+
+                        <img
+                            src="assets/logo.webp"
+                            alt="PAWSHIELD Animal Rescue Foundation"
+                            class="logo-img">
+
+                    </a>
+
+
+                    <p>
+                        Recover access to your PAWSHIELD account.
+                    </p>
+
+                </div>
+
+
+                <!-- SUCCESS -->
+
+                <div
+                    id="forgotSuccess"
+                    class="alert alert-success">
+                </div>
+
+
+                <!-- ERROR -->
+
+                <div
+                    id="forgotError"
+                    class="alert alert-danger">
+                </div>
+
+
+                <!-- FORGOT FORM -->
+
+                <form
+                    id="forgotForm"
+                    novalidate>
+
+
+                    <div class="form-group">
+
+                        <label for="forgotEmail">
+                            Email Address
+                        </label>
+
+
+                        <input
+                            type="email"
+                            id="forgotEmail"
+                            class="form-control"
+                            placeholder="you@example.com"
+                            required
+                            autocomplete="email">
+
+
+                        <div
+                            class="validation-message"
+                            id="forgotEmailValError">
+                        </div>
+
+                    </div>
+
+
+                    <!-- SEND RESET -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-forgot-submit"
+                        style="
+                            width:100%;
+                            margin-bottom:12px;
+                        ">
+
+                        Send Reset Link
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <!-- BACK -->
+
+                    <button
+                        type="button"
+                        class="btn btn-outline btn-back-to-login"
+                        id="backToLoginFromForgot"
+                        style="
+                            width:100%;
+                            border-color:var(--primary-color);
+                            color:var(--primary-color);
+                        ">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back to Login
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 3. SIGN UP SECTION
+            ================================================= -->
+
+            <div
+                class="form-section"
+                id="signUpSection"
+                style="
+                    display:none;
+                    opacity:0;
+                    transform:translateY(10px);
+                ">
+
+
+                <!-- HEADER -->
+
+                <div class="login-header">
+
+                    <a
+                        href="index.html"
+                        class="login-logo">
+
+                        <img
+                            src="assets/logo.webp"
+                            alt="PAWSHIELD Animal Rescue Foundation"
+                            class="logo-img">
+
+                    </a>
+
+
+                    <p>
+                        Create your PAWSHIELD rescue community account.
+                    </p>
+
+                </div>
+
+
+                <!-- SUCCESS -->
+
+                <div
+                    id="signUpSuccess"
+                    class="alert alert-success">
+                </div>
+
+
+                <!-- ERROR -->
+
+                <div
+                    id="signUpError"
+                    class="alert alert-danger">
+                </div>
+
+
+                <!-- SIGN UP FORM -->
+
+                <form
+                    id="signUpForm"
+                    novalidate>
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="form-group">
+
+                        <label for="signUpName">
+                            Full Name
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="signUpName"
+                            class="form-control"
+                            placeholder="Enter your full name"
+                            required
+                            autocomplete="name"
+                            oninput="
+                                this.value=this.value.replace(
+                                    /[^A-Za-z\s]/g,
+                                    ''
+                                )
+                            ">
+
+
+                        <div
+                            class="validation-message"
+                            id="signUpNameValError">
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="signUpEmail">
+                            Email Address
+                        </label>
+
+
+                        <input
+                            type="email"
+                            id="signUpEmail"
+                            class="form-control"
+                            placeholder="you@example.com"
+                            required
+                            autocomplete="email">
+
+
+                        <div
+                            class="validation-message"
+                            id="signUpEmailValError">
+                        </div>
+
+                    </div>
+
+
+                    <!-- MOBILE -->
+
+                    <div class="form-group">
+
+                        <label for="signUpMobile">
+                            Mobile Number
+                        </label>
+
+
+                        <input
+                            type="tel"
+                            id="signUpMobile"
+                            class="form-control"
+                            placeholder="Enter 10-digit number"
+                            required
+                            maxlength="10"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                            oninput="
+                                this.value=this.value.replace(
+                                    /[^0-9]/g,
+                                    ''
+                                )
+                            ">
+
+
+                        <div
+                            class="validation-message"
+                            id="signUpMobileValError">
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="signUpPassword">
+                            Password
+                        </label>
+
+
+                        <div class="password-input-wrapper">
+
+                            <input
+                                type="password"
+                                id="signUpPassword"
+                                class="form-control"
+                                placeholder="Minimum 8 characters"
+                                required
+                                autocomplete="new-password">
+
+
+                            <button
+                                type="button"
+                                id="toggleSignUpPassword"
+                                class="password-toggle-btn"
+                                aria-label="Show password">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            class="validation-message"
+                            id="signUpPasswordValError">
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="signUpConfirmPassword">
+                            Confirm Password
+                        </label>
+
+
+                        <div class="password-input-wrapper">
+
+                            <input
+                                type="password"
+                                id="signUpConfirmPassword"
+                                class="form-control"
+                                placeholder="Re-enter password"
+                                required
+                                autocomplete="new-password">
+
+
+                            <button
+                                type="button"
+                                id="toggleSignUpConfirmPassword"
+                                class="password-toggle-btn"
+                                aria-label="Show password">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            class="validation-message"
+                            id="signUpConfirmPasswordValError">
+                        </div>
+
+                    </div>
+
+
+                    <!-- CREATE ACCOUNT -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-signup-submit"
+                        style="
+                            width:100%;
+                            margin-bottom:12px;
+                        ">
+
+                        Create Account
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <!-- BACK TO LOGIN -->
+
+                    <button
+                        type="button"
+                        class="btn btn-outline btn-back-to-login"
+                        id="backToLoginFromSignUp"
+                        style="
+                            width:100%;
+                            border-color:var(--primary-color);
+                            color:var(--primary-color);
+                        ">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back to Login
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
 
     <!-- =====================================================
          PAGE SCRIPT

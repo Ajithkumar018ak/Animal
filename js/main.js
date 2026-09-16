@@ -57,9 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mobileLogin) {
         mobileLogin.addEventListener("click", () => {
             closeDrawer();
-            if (openLogin) {
-                openLogin.click();
-            }
+            /* login-modal.js handles opening the modal */
         });
     }
 
