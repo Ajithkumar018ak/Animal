@@ -4127,6 +4127,18 @@
     object-fit: contain;
 }
 
+
+.dashboard-welcome {
+    margin-bottom: 18px;
+    color: #e8753d;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.dashboard-welcome span {
+    color: #ffffff;
+}
+
     </style>
 
 </head>
@@ -4405,6 +4417,12 @@
                 <div class="hero">
 
                     <div class="hero-content">
+
+
+                         <div class="dashboard-welcome">
+        Welcome, <span id="dashboardUserName">User</span>
+    </div>
+
 
                         <div class="hero-label">
 
@@ -9559,7 +9577,14 @@
 
 
         });
+document.addEventListener("DOMContentLoaded", function () {
+    const userName = localStorage.getItem("userName");
+    const nameElement = document.getElementById("dashboardUserName");
 
+    if (userName && nameElement) {
+        nameElement.textContent = userName;
+    }
+});
     </script>
 
 
