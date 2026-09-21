@@ -12460,3 +12460,14 @@ body {
 .story-editorial .story-content .story-read i {
     color: #ffffff !important;
 }
+
+
+
+.story-section .reveal,
+.principles-section .reveal,
+.people-section .reveal,
+.about-cta .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
